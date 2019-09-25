@@ -11,8 +11,6 @@ ScriptsOnlyBuild:
     - UnitFactory
     - Wave
     - WaveManager
-    UnityEditor.TestRunner.dll:
-    - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -68,19 +66,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9620}
     - Class: 114
-      Script: {instanceID: 9904}
+      Script: {instanceID: 9906}
     - Class: 114
-      Script: {instanceID: 10000}
+      Script: {instanceID: 10002}
     - Class: 114
-      Script: {instanceID: 10028}
+      Script: {instanceID: 10030}
     - Class: 114
-      Script: {instanceID: 10046}
+      Script: {instanceID: 10048}
     - Class: 114
-      Script: {instanceID: 10122}
+      Script: {instanceID: 10124}
     - Class: 114
-      Script: {instanceID: 10172}
+      Script: {instanceID: 10174}
     - Class: 114
-      Script: {instanceID: 10476}
+      Script: {instanceID: 10478}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -350,6 +348,18 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_InputField
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.Advertisements.dll
+    namespaceName: UnityEngine.Advertisements
+    className: CallbackExecutor
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.Advertisements.dll
+    namespaceName: UnityEngine.Advertisements.Editor
+    className: Placeholder
   - hash:
       serializedVersion: 2
       Hash: cf9f5cf2c3145a37ac07f00e50e460f9
@@ -634,6 +644,12 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Round
+  - hash:
+      serializedVersion: 2
       Hash: 58bb7bcece1221a7fcdaf960b480b7ed
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -748,7 +764,7 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: fa29f033763710dbbede6a304de4eb11
+      Hash: b47d4bad47cb0b3fb822c397c7d87b26
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UnitFactory
@@ -815,4 +831,5 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/GameScene.unity
-  playerPath: C:/Users/John/Desktop/build/Duck Duck Tower Defense.exe
+  playerPath: E:/Projects/Unity/Duck Duck Defense/Duck-Duck-Defense/Builds/Duck Duck
+    Defense.exe
