@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BaseGoose
   health: 10
   speed: 4
-  lifeWorth: 0
-  goldWorth: 0
+  lifeWorth: 5
+  goldWorth: 10

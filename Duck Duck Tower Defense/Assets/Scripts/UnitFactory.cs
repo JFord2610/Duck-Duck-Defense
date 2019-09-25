@@ -1,14 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections;
-
 public class UnitFactory : MonoBehaviour
 {
     [SerializeField]
-    private GameObject goose;
+    private GameObject goose = null;
     [SerializeField]
-    private GameObject duck;
+    private GameObject duck = null;
     [SerializeField]
-    private GameManagerScript gameManager;
+    private GameManagerScript gameManager = null;
 
     public GameObject SpawnGoose(float _speed, float _health, int _lifeWorth, int _goldWorth)
     {
@@ -21,6 +19,7 @@ public class UnitFactory : MonoBehaviour
         gameManager.geese.Add(g);
         return g;
     }
+
     public GameObject SpawnDuck()
     {
         GameObject d = Instantiate(duck);

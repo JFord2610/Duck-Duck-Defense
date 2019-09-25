@@ -11,7 +11,6 @@ public class TowerController : MonoBehaviour
     public float attackSpeed;
 
     public Transform sprite;
-    public Animator animator;
     public GameManagerScript gameManager;
 
     private GeeseScript[] inRangeGeese;
@@ -23,7 +22,6 @@ public class TowerController : MonoBehaviour
     private void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
-        animator.speed = attackSpeed;
     }
 
     void Update()
@@ -79,8 +77,6 @@ public class TowerController : MonoBehaviour
 
     void AttackGoose(GeeseScript goose)
     {
-        animator.speed = attackSpeed;
-        animator.SetTrigger("AttackTrigger");
         goose.health -= damage;
         if (goose.health <= 0)
             goose.Die();
@@ -89,7 +85,6 @@ public class TowerController : MonoBehaviour
     IEnumerator AttackCooldown()
     {
         yield return new WaitForSeconds(1 / attackSpeed);
-        animator.ResetTrigger("AttackTrigger");
         active = true;
     }
 

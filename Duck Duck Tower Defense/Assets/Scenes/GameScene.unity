@@ -709,9 +709,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitFactory: {fileID: 1822230348}
   Rounds:
-  - {fileID: 11400000, guid: 46c8109720348d2459d8d8c1a928625b, type: 2}
-  inProgress: 0
-  currentRound: {fileID: 0}
+  - {fileID: 11400000, guid: 4aea284862645224684df86d4a1eca4d, type: 2}
 --- !u!4 &839918148
 Transform:
   m_ObjectHideFlags: 0

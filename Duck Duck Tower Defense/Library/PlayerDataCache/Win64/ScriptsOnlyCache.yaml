@@ -1,16 +1,20 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - BaseGoose
     - GameManagerScript
     - GeeseScript
     - Path
     - PathfindingGridScript
     - PlayerHolder
+    - Round
     - Shop
     - TowerController
     - UnitFactory
     - Wave
     - WaveManager
+    UnityEditor.TestRunner.dll:
+    - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -50,35 +54,39 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9326}
     - Class: 114
-      Script: {instanceID: 9372}
-    - Class: 114
       Script: {instanceID: 9374}
     - Class: 114
-      Script: {instanceID: 9380}
+      Script: {instanceID: 9376}
     - Class: 114
-      Script: {instanceID: 9386}
+      Script: {instanceID: 9382}
     - Class: 114
-      Script: {instanceID: 9394}
+      Script: {instanceID: 9388}
     - Class: 114
-      Script: {instanceID: 9430}
+      Script: {instanceID: 9396}
     - Class: 114
       Script: {instanceID: 9432}
     - Class: 114
-      Script: {instanceID: 9620}
+      Script: {instanceID: 9434}
     - Class: 114
-      Script: {instanceID: 9906}
+      Script: {instanceID: 9622}
     - Class: 114
-      Script: {instanceID: 10002}
+      Script: {instanceID: 9896}
     - Class: 114
-      Script: {instanceID: 10030}
+      Script: {instanceID: 9910}
     - Class: 114
-      Script: {instanceID: 10048}
+      Script: {instanceID: 10006}
     - Class: 114
-      Script: {instanceID: 10124}
+      Script: {instanceID: 10034}
     - Class: 114
-      Script: {instanceID: 10174}
+      Script: {instanceID: 10052}
     - Class: 114
-      Script: {instanceID: 10478}
+      Script: {instanceID: 10128}
+    - Class: 114
+      Script: {instanceID: 10178}
+    - Class: 114
+      Script: {instanceID: 10204}
+    - Class: 114
+      Script: {instanceID: 10484}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -348,18 +356,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_InputField
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: UnityEngine.Advertisements.dll
-    namespaceName: UnityEngine.Advertisements
-    className: CallbackExecutor
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: UnityEngine.Advertisements.dll
-    namespaceName: UnityEngine.Advertisements.Editor
-    className: Placeholder
   - hash:
       serializedVersion: 2
       Hash: cf9f5cf2c3145a37ac07f00e50e460f9
@@ -644,7 +640,7 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: ccf5e49239125453116d2150e48a64b2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Round
@@ -668,7 +664,7 @@ ScriptsOnlyBuild:
     className: PathfindingScript
   - hash:
       serializedVersion: 2
-      Hash: e20b71e128ba9fd0d75fa8996abaf8f1
+      Hash: 3566bfed3adc1217f712c47e64be88a0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Wave
@@ -782,6 +778,12 @@ ScriptsOnlyBuild:
     className: AudioTrack
   - hash:
       serializedVersion: 2
+      Hash: dbb55160574c7c04b9f025fe53f5b30b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BaseGoose
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -812,7 +814,7 @@ ScriptsOnlyBuild:
     className: TMP_SubMesh
   - hash:
       serializedVersion: 2
-      Hash: 0d52b0942cfc26bafb3319b3467652fd
+      Hash: 21891025293cde4b19f3d530ff3bdd0c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: WaveManager
@@ -831,5 +833,5 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/GameScene.unity
-  playerPath: E:/Projects/Unity/Duck Duck Defense/Duck-Duck-Defense/Builds/Duck Duck
-    Defense.exe
+  playerPath: E:/Projects/Unity/Duck Duck Defense/Duck-Duck-Defense/Builds/Build 0.1.1a/Duck
+    Duck Defense.exe
