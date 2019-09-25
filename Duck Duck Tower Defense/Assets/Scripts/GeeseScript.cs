@@ -9,7 +9,7 @@ public class GeeseScript : MonoBehaviour
     public int lifeWorth = 5;
     public int goldWorth = 10;
 
-    public float turnThreshold = 0.25f;
+    public float turnThreshold = 0.01f;
 
     public Path currentPath;
     public GameManagerScript gameManager;
@@ -34,6 +34,12 @@ public class GeeseScript : MonoBehaviour
 
     private void Update()
     {
+        
+
+    }
+
+    private void FixedUpdate()
+    {
         if ((transform.position - MovingTo).magnitude < turnThreshold)
         {
             moving = false;
@@ -41,7 +47,7 @@ public class GeeseScript : MonoBehaviour
 
         if ((transform.position - MovingTo).magnitude > turnThreshold && moving)
         {
-            transform.Translate(-(transform.position - MovingTo).normalized * Time.deltaTime * speed);
+            transform.Translate((MovingTo - transform.position).normalized * Time.deltaTime * speed);
         }
         else
         {
@@ -50,7 +56,6 @@ public class GeeseScript : MonoBehaviour
             currentPathIndex++;
             moving = true;
         }
-
     }
 
     Vector3 GetWorldPosFromPathIndex(int pathIndex)

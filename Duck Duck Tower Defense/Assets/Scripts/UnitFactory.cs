@@ -3,15 +3,17 @@ using System.Collections;
 
 public class UnitFactory : MonoBehaviour
 {
-    public GameObject Goose;
-    public GameObject Duck;
-    public GameManagerScript gameManager;
+    [SerializeField]
+    private GameObject goose;
+    [SerializeField]
+    private GameObject duck;
+    [SerializeField]
+    private GameManagerScript gameManager;
 
     public GameObject SpawnGeese(float _speed, float _health)
     {
-        GameObject g = Instantiate(Goose);
-        GeeseScript s = Goose.GetComponent<GeeseScript>();
-        //s.turnThreshold = 0.3f; //+ Random.Range(-0.08f, 0.08f);
+        GameObject g = Instantiate(goose);
+        GeeseScript s = goose.GetComponent<GeeseScript>();
         s.speed = _speed;
         s.health = _health;
         gameManager.geese.Add(g);
@@ -19,7 +21,7 @@ public class UnitFactory : MonoBehaviour
     }
     public GameObject SpawnDuck()
     {
-        GameObject d = Instantiate(Duck);
+        GameObject d = Instantiate(duck);
         return d;
     }
 }

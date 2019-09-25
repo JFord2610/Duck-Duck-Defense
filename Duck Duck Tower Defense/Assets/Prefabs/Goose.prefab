@@ -124,8 +124,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  speed: 1.05
-  turnThreshold: 0.2297375
+  speed: 1.5
+  lifeWorth: 5
+  goldWorth: 10
+  turnThreshold: 0.01
   currentPath: {fileID: 11400000, guid: 1ac3f76667ed3d14c9b1701cec4c3428, type: 2}
   gameManager: {fileID: 0}
   sprite: {fileID: 4358339811466946593}

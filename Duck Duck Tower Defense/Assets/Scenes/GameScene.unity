@@ -2718,8 +2718,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3807dffb857cad645a2c6c446c576139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Goose: {fileID: 4358339812752623738, guid: bc63474e5b0f7bb4798197c3bfa9acd7, type: 3}
-  Duck: {fileID: 5718340254931879210, guid: 979591c294f221147a9199864933b877, type: 3}
+  goose: {fileID: 4358339812752623738, guid: bc63474e5b0f7bb4798197c3bfa9acd7, type: 3}
+  duck: {fileID: 5718340254931879210, guid: 979591c294f221147a9199864933b877, type: 3}
   gameManager: {fileID: 1870122234}
 --- !u!4 &1822230349
 Transform:
