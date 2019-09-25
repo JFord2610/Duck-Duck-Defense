@@ -9,7 +9,7 @@ public class GeeseScript : MonoBehaviour
     public int lifeWorth = 5;
     public int goldWorth = 10;
 
-    public float turnThreshold = 0.01f;
+    public float turnThreshold = 0.3f;
 
     public Path currentPath;
     public GameManagerScript gameManager;

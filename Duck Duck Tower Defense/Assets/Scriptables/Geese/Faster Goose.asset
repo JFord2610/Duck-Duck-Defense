@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd93dd984c7a9f44ae60f9e0d36c163, type: 3}
-  m_Name: WaveOne
-  m_EditorClassIdentifier: 
-  Geese: 10
-  geeseHealth: 10
-  geeseSpeed: 1.5
-  timeDelta: 1
+  m_Script: {fileID: 0}
+  m_Name: Faster Goose
+  m_EditorClassIdentifier: Assembly-CSharp::BaseGoose
+  health: 10
+  speed: 8
+  lifeWorth: 5
+  goldWorth: 15

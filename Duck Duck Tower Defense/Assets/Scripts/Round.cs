@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
+[CreateAssetMenu(menuName = "Wave Manager/Round")]
 public class Round : ScriptableObject
 {
-    Wave[] waves;
-    float[] waveTimings; //time in seconds between each wave
+    public Wave[] waves;
+    public float[] timeBetweenWaves;
 }

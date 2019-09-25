@@ -1,12 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
-[CreateAssetMenu(menuName = "Wave")]
+[CreateAssetMenu(menuName = "Wave Manager/Wave")]
 public class Wave : ScriptableObject
 {
-    public int Geese;
-    public float geeseHealth;
-    public float geeseSpeed;
+    public List<BaseGoose> Geese;
     public float timeDelta;
 }

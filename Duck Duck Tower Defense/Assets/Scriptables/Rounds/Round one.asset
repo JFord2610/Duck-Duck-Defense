@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd93dd984c7a9f44ae60f9e0d36c163, type: 3}
-  m_Name: Single Fast Test
+  m_Script: {fileID: 11500000, guid: b72f1ed7e3bf6be48b4ef604afe19b14, type: 3}
+  m_Name: Round one
   m_EditorClassIdentifier: 
-  Geese: 1
-  geeseHealth: 5
-  geeseSpeed: 10
-  timeDelta: 0.25
+  waves:
+  - {fileID: 11400000, guid: fa03ef28325b5904c8f47a0e1d743f6c, type: 2}
+  - {fileID: 11400000, guid: fbbbc9dc4bb53604c87ca0efee2add31, type: 2}
+  timeBetweenWaves:
+  - 1

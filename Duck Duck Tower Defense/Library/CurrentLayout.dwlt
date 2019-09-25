@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 4}
-  m_MinSize: {x: 950, y: 544}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -73,7 +73,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 222}
   m_MaxSize: {x: 8006, y: 4022}
   vertical: 0
-  controlID: 116
+  controlID: 123
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -96,7 +96,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 950, y: 544}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &5
 MonoBehaviour:
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_MinSize: {x: 887, y: 494}
   m_MaxSize: {x: 18008, y: 14044}
   vertical: 0
-  controlID: 13
+  controlID: 93
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -191,7 +191,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 494}
   m_MaxSize: {x: 10002, y: 14044}
   vertical: 1
-  controlID: 115
+  controlID: 122
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -416,7 +416,7 @@ MonoBehaviour:
   m_Position:
     m_Target: {x: 0.036263496, y: -1.0152458, z: -166.17932}
     speed: 2
-    m_Value: {x: 0.006602317, y: -0.9855847, z: -166.11809}
+    m_Value: {x: 0.036263496, y: -1.0152458, z: -166.17932}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -451,7 +451,7 @@ MonoBehaviour:
   m_Size:
     m_Target: 16.252739
     speed: 2
-    m_Value: 17.018576
+    m_Value: 16.252739
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -514,21 +514,21 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Scriptables
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Scriptables
   m_LastFoldersGridSize: 16
   m_LastProjectPath: E:\Projects\Unity\Duck Duck Defense\Duck-Duck-Defense\Duck Duck
     Tower Defense
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ec290000
-    m_LastClickedID: 10732
-    m_ExpandedIDs: 000000001429000000ca9a3b
+    scrollPos: {x: 0, y: 55}
+    m_SelectedIDs: ce2a0000
+    m_LastClickedID: 10958
+    m_ExpandedIDs: 0000000018290000f0290000ce2a0000c42c000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -556,7 +556,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 3042ffff
     m_LastClickedID: -48592
-    m_ExpandedIDs: 0000000014290000
+    m_ExpandedIDs: 0000000018290000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -668,7 +668,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: d0f7fffffef7ffff00f8ffffa0f8ffffcef8ffffb4f9ffff8efbffff
+      m_ExpandedIDs: 74fbffffc22b0000f62b0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 

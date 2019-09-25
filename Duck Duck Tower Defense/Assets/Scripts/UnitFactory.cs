@@ -10,12 +10,14 @@ public class UnitFactory : MonoBehaviour
     [SerializeField]
     private GameManagerScript gameManager;
 
-    public GameObject SpawnGeese(float _speed, float _health)
+    public GameObject SpawnGoose(float _speed, float _health, int _lifeWorth, int _goldWorth)
     {
         GameObject g = Instantiate(goose);
         GeeseScript s = goose.GetComponent<GeeseScript>();
         s.speed = _speed;
         s.health = _health;
+        s.lifeWorth = _lifeWorth;
+        s.goldWorth = _goldWorth;
         gameManager.geese.Add(g);
         return g;
     }

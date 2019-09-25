@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\BaseGoose.cs" />
     <Compile Include="Assets\Scripts\GameManagerScript.cs" />
     <Compile Include="Assets\Scripts\GeeseScript.cs" />
     <Compile Include="Assets\Scripts\MenuController.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Assets\Scripts\PathfindingGridScript.cs" />
     <Compile Include="Assets\Scripts\PathfindingScript.cs" />
     <Compile Include="Assets\Scripts\PlayerHolder.cs" />
+    <Compile Include="Assets\Scripts\RenameAttribute.cs" />
     <Compile Include="Assets\Scripts\Round.cs" />
     <Compile Include="Assets\Scripts\Shop.cs" />
     <Compile Include="Assets\Scripts\TowerController.cs" />

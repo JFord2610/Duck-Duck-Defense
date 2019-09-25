@@ -4,46 +4,57 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
-    public UnitFactory factory;
+    [SerializeField]
+    private UnitFactory unitFactory;
 
-    public List<GeeseScript> geese;
-    public Wave[] Waves;
-    public int currentWaveIndex;
-    public bool startWave;
+    [SerializeField]
+    private Round[] Rounds;
+    private int roundIndex;
 
-    private Wave currentWave;
+    [SerializeField]
+    private bool inProgress;
 
-    private void Update()
+    [SerializeField]
+    private Round currentRound;
+
+    private void Awake()
     {
-        if (startWave)
+        inProgress = false;
+    }
+
+    public void StartNextRound()
+    {
+        if (!inProgress)
         {
-            startWave = false;
-            StartWaves();
+            inProgress = true;
+
+            StartCoroutine("RoundLoop", Rounds[roundIndex]);
+            roundIndex++;
         }
     }
 
-    void StartWaves()
+    IEnumerator RoundLoop(Round r)
     {
-        foreach (Wave w in Waves)
+        for (int i = 0; i < r.waves.Length; i++)
         {
-            currentWave = w;
-            currentWaveIndex = 0;
-            StartCoroutine("DoWave");
+            yield return StartCoroutine("WaveLoop", r.waves[i]);
+
+            if (r.timeBetweenWaves.Length == 1)
+                yield return new WaitForSeconds(r.timeBetweenWaves[0]);
+            else
+                yield return new WaitForSeconds(r.timeBetweenWaves[i]);
         }
+        inProgress = false;
     }
 
-    IEnumerator DoWave()
+    IEnumerator WaveLoop(Wave w)
     {
-        while (currentWaveIndex < currentWave.Geese)
+        for (int i = 0; i < w.Geese.Count; i++)
         {
-            factory.SpawnGeese(currentWave.geeseSpeed, currentWave.geeseHealth);
-            currentWaveIndex++;
-            yield return new WaitForSeconds(currentWave.timeDelta);
-        }
-    }
+            BaseGoose g = w.Geese[i];
+            unitFactory.SpawnGoose(g.speed, g.health, g.lifeWorth, g.goldWorth);
 
-    public void StartRound()
-    {
-        startWave = true;
+            yield return new WaitForSeconds(w.timeDelta);
+        }
     }
 }
