@@ -63,17 +63,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\GameManagerScript.cs" />
-    <Compile Include="Assets\Scripts\GeeseScript.cs" />
     <Compile Include="Assets\Scripts\MenuController.cs" />
-    <Compile Include="Assets\Scripts\Node.cs" />
-    <Compile Include="Assets\Scripts\Path.cs" />
-    <Compile Include="Assets\Scripts\PathfindingGridScript.cs" />
-    <Compile Include="Assets\Scripts\PathfindingScript.cs" />
+    <Compile Include="Assets\Scripts\Pathing\Path.cs" />
+    <Compile Include="Assets\Scripts\Pathing\PathFinder.cs" />
+    <Compile Include="Assets\Scripts\Pathing\PathManager.cs" />
+    <Compile Include="Assets\Scripts\Pathing\Point.cs" />
     <Compile Include="Assets\Scripts\PlayerHolder.cs" />
     <Compile Include="Assets\Scripts\Shop.cs" />
     <Compile Include="Assets\Scripts\TowerController.cs" />
-    <Compile Include="Assets\Scripts\UnitFactory.cs" />
-    <Compile Include="Assets\Scripts\WaveManager\BaseGoose.cs" />
+    <Compile Include="Assets\Scripts\Units\BaseGoose.cs" />
+    <Compile Include="Assets\Scripts\Units\UnitFactory.cs" />
+    <Compile Include="Assets\Scripts\WaveManager\GooseData.cs" />
     <Compile Include="Assets\Scripts\WaveManager\Round.cs" />
     <Compile Include="Assets\Scripts\WaveManager\Wave.cs" />
     <Compile Include="Assets\Scripts\WaveManager\WaveManager.cs" />

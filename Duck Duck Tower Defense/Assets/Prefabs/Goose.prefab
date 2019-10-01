@@ -89,6 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4358339812752623732}
   - component: {fileID: 1110024170}
+  - component: {fileID: -4533018353857480888}
   m_Layer: 0
   m_Name: Goose
   m_TagString: Untagged
@@ -127,7 +128,16 @@ MonoBehaviour:
   speed: 1.5
   lifeWorth: 5
   goldWorth: 10
-  turnThreshold: 0.01
-  currentPath: {fileID: 11400000, guid: 1ac3f76667ed3d14c9b1701cec4c3428, type: 2}
   gameManager: {fileID: 0}
-  sprite: {fileID: 4358339811466946593}
+--- !u!114 &-4533018353857480888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4358339812752623738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 704ec74bc1b4a30468099ddab3bf2cfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

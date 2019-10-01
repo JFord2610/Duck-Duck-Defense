@@ -13,7 +13,7 @@ public class TowerController : MonoBehaviour
     public Transform sprite;
     public GameManagerScript gameManager;
 
-    private GeeseScript[] inRangeGeese;
+    private BaseGoose[] inRangeGeese;
 
     private bool active = true;
     private bool AttachedToMouse = false;
@@ -43,9 +43,9 @@ public class TowerController : MonoBehaviour
             inRangeGeese = findGeeseInRange();
             if (inRangeGeese.Length > 0)
             {
-                GeeseScript closest = inRangeGeese[0];
+                BaseGoose closest = inRangeGeese[0];
                 float closestDst = float.MaxValue;
-                foreach (GeeseScript goose in inRangeGeese)
+                foreach (BaseGoose goose in inRangeGeese)
                 {
                     float dst = (transform.position - goose.Position).magnitude;
                     if (dst < closestDst)
@@ -75,7 +75,7 @@ public class TowerController : MonoBehaviour
         AttachedToMouse = false;
     }
 
-    void AttackGoose(GeeseScript goose)
+    void AttackGoose(BaseGoose goose)
     {
         goose.health -= damage;
         if (goose.health <= 0)
@@ -88,14 +88,14 @@ public class TowerController : MonoBehaviour
         active = true;
     }
 
-    GeeseScript[] findGeeseInRange()
+    BaseGoose[] findGeeseInRange()
     {
         Stopwatch sw = new Stopwatch();
         sw.Start();
-        List<GeeseScript> geese = new List<GeeseScript>();
+        List<BaseGoose> geese = new List<BaseGoose>();
         foreach (GameObject g in gameManager.geese)
         {
-            GeeseScript goose = g.GetComponent<GeeseScript>();
+            BaseGoose goose = g.GetComponent<BaseGoose>();
             if (goose == null) continue;
 
             if ((transform.position - goose.Position).magnitude < attackRange)
