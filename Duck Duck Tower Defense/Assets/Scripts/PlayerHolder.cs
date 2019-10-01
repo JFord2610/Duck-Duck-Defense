@@ -38,19 +38,16 @@ public class PlayerHolder : MonoBehaviour
 
     public void AddMoney(int m)
     {
-        if (gameManager.playerBusy) return;
         money += m;
     }
 
     public void TakeMoney(int m)
     {
-        if (gameManager.playerBusy) return;
         money -= m;
     }
 
     public void Heal(int l)
     {
-        if (gameManager.playerBusy) return;
         life += l;
     }
 

@@ -26,6 +26,13 @@ public class BaseGoose : MonoBehaviour
         GetComponent<PathFinder>().StartPath();
     }
 
+    public void Damage(float damage)
+    {
+        health -= damage;
+        if (health < 0)
+            Die();
+    }
+
     public void Die()
     {
         gameManager.player.AddMoney(goldWorth);

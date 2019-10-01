@@ -120,12 +120,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5718340254931879210}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4920b64bb847a2b4e9398c0e40b03e37, type: 3}
+  m_Script: {fileID: 11500000, guid: e22887d8c228e46429dea9520e052db5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  attackRange: 3
+  attackRange: 4
   attackSpeed: 2
-  sprite: {fileID: 3959165540999343288}
-  animator: {fileID: 0}
-  gameManager: {fileID: 0}
+  targetingType: 1

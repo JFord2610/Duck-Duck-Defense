@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Enums\ETargetingType.cs" />
     <Compile Include="Assets\Scripts\GameManagerScript.cs" />
     <Compile Include="Assets\Scripts\MenuController.cs" />
     <Compile Include="Assets\Scripts\Pathing\Path.cs" />
@@ -70,8 +71,10 @@
     <Compile Include="Assets\Scripts\Pathing\Point.cs" />
     <Compile Include="Assets\Scripts\PlayerHolder.cs" />
     <Compile Include="Assets\Scripts\Shop.cs" />
-    <Compile Include="Assets\Scripts\TowerController.cs" />
+    <Compile Include="Assets\Scripts\Units\AttackRadius.cs" />
     <Compile Include="Assets\Scripts\Units\BaseGoose.cs" />
+    <Compile Include="Assets\Scripts\Units\Towers\BaseTower.cs" />
+    <Compile Include="Assets\Scripts\Units\Towers\Gerald.cs" />
     <Compile Include="Assets\Scripts\Units\UnitFactory.cs" />
     <Compile Include="Assets\Scripts\WaveManager\GooseData.cs" />
     <Compile Include="Assets\Scripts\WaveManager\Round.cs" />
