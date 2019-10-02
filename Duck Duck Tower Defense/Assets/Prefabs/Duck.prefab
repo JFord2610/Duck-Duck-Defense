@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 5725866218632788179}
   - component: {fileID: 7030767203417575199}
   - component: {fileID: 605527946037550412}
+  - component: {fileID: 2438017532618247118}
   m_Layer: 0
   m_Name: Duck
   m_TagString: Untagged
@@ -127,9 +128,8 @@ MonoBehaviour:
   damage: 5
   attackRange: 4
   attackSpeed: 2
-  active: 0
+  alive: 0
   targetingType: 1
-  colliding: 0
 --- !u!58 &605527946037550412
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -146,3 +146,24 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.25
+--- !u!50 &2438017532618247118
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5718340254931879210}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
