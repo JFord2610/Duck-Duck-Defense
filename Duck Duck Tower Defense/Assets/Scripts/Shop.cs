@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Shop : MonoBehaviour
 {
@@ -11,14 +12,40 @@ public class Shop : MonoBehaviour
 
     private bool holdingDuck;
 
-    GameObject duck;
+    GameObject duckObj;
+    BaseTower duckTower;
+
+    private void Awake()
+    {
+    }
+
+    private void FixedUpdate()
+    {
+        if (holdingDuck)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                if(!duckTower.colliding)
+                {
+                    holdingDuck = false;
+                    gameManager.player.money -= duckBuyPrice;
+                    duckTower.alive = true;
+                }
+            }
+            if (Input.GetMouseButtonUp(1))
+            {
+                holdingDuck = false;
+                Destroy(duckObj);
+            }
+        }
+    }
 
     public void DuckButtonPressed()
     {
-        if(gameManager.player.money > duckBuyPrice)
+        if (gameManager.player.money > duckBuyPrice)
         {
-            gameManager.playerBusy = true;
-            duck = unitFactory.SpawnDuck();
+            duckObj = unitFactory.SpawnDuck();
+            duckTower = duckObj.GetComponent<BaseTower>();
             holdingDuck = true;
             StartCoroutine("HoldingDuck");
         }
@@ -30,22 +57,11 @@ public class Shop : MonoBehaviour
 
     IEnumerator HoldingDuck()
     {
-        while(holdingDuck)
+        while (holdingDuck)
         {
             yield return new WaitForFixedUpdate();
             Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            duck.transform.position = new Vector3(pos.x, pos.y, 0.0f);
-            if (Input.GetMouseButtonDown(0))
-            {
-                holdingDuck = false;
-                gameManager.player.money -= duckBuyPrice;
-                duck.GetComponent<BaseTower>().active = true;
-            }
-            if(Input.GetMouseButtonUp(1))
-            {
-                holdingDuck = false;
-                Destroy(duck);
-            }
+            duckObj.transform.position = new Vector3(pos.x, pos.y, 0.0f);
         }
     }
 }

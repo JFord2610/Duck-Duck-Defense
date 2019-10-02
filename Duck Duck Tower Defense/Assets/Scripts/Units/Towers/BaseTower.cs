@@ -7,8 +7,10 @@ public abstract class BaseTower : MonoBehaviour
     public float damage = 0, attackRange = 0, attackSpeed = 0;
 
     protected bool onCooldown = false;
-    public bool active = false;
+    public bool alive = false;
     public ETargetingType targetingType = ETargetingType.Closest;
+    
+    public bool colliding { get; private set; }
 
     GameManagerScript gameManager = null;
     Transform sprite;
@@ -26,7 +28,7 @@ public abstract class BaseTower : MonoBehaviour
 
     private void Update()
     {
-        if (active)
+        if (alive)
             Action();
     }
 
@@ -114,5 +116,17 @@ public abstract class BaseTower : MonoBehaviour
         Vector3 dir = p - sprite.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         sprite.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Colliding");
+        colliding = true;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        Debug.Log("Not Colliding");
+        colliding = false;
     }
 }

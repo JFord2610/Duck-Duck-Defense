@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 4272956350077461567}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5725866218632788179}
   m_RootOrder: 0
@@ -68,7 +68,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 76959c081ac452e4c981b9d8a578b047, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 09ec0f75e84c0154b9db9fac768d1525, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -89,6 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5725866218632788179}
   - component: {fileID: 7030767203417575199}
+  - component: {fileID: 605527946037550412}
   m_Layer: 0
   m_Name: Duck
   m_TagString: Untagged
@@ -126,4 +127,22 @@ MonoBehaviour:
   damage: 5
   attackRange: 4
   attackSpeed: 2
+  active: 0
   targetingType: 1
+  colliding: 0
+--- !u!58 &605527946037550412
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5718340254931879210}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.25
