@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
     public GameObject mainMenuCanvas;
     public GameObject pauseMenuCanvas;
+    [SerializeField] Slider volumeSlider;
 
     public void PlayButton_Click()
     {
@@ -28,5 +30,11 @@ public class MenuController : MonoBehaviour
     public void ExitButton_Clicked()
     {
         Application.Quit();
+    }
+
+    public void VolumeSlider_OnChanged()
+    {
+        float value = volumeSlider.value;
+        Camera.main.GetComponent<AudioSource>().volume = value;
     }
 }
