@@ -18,7 +18,7 @@ public class WaveManager : MonoBehaviour
 
     public void StartNextRound()
     {
-        if (!inProgress)
+        if (!inProgress && roundIndex < Rounds.Length)
         {
             if (Rounds == null || unitFactory == null)
                 return;
