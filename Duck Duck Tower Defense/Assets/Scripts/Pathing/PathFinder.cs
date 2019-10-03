@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class PathFinder : MonoBehaviour
 {
-    Path path;
+    public Path path;
+    public int currentPathIndex;
+
     PathManager pathManager;
     BaseGoose goose;
-    
-    [SerializeField]
-    int currentPathIndex;
+    Transform spriteTransform;
 
     private void Awake()
     {
         goose = GetComponent<BaseGoose>();
         pathManager = GameObject.Find("PathHolder").GetComponent<PathManager>();
+        spriteTransform = transform.GetChild(0).transform;
         path = pathManager.path;
         currentPathIndex = 0;
     }
@@ -42,6 +43,7 @@ public class PathFinder : MonoBehaviour
 
                 if(currentPathIndex > path.WayPoints.Length - 1)
                 {
+                    goose.moving = false;
                     goose.Die();
                     return;
                 }
@@ -63,7 +65,9 @@ public class PathFinder : MonoBehaviour
 
     private void RotateToPoint(Vector3 p)
     {
-        //To Do: Rotate goose
+        Vector3 dir = p - spriteTransform.position;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        spriteTransform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
     }
 
 }

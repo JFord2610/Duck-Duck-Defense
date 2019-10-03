@@ -10,8 +10,9 @@ public class BaseGoose : MonoBehaviour
     public int goldWorth = 10;
 
     public bool moving;
-    
+
     public GameManagerScript gameManager;
+    private PathFinder pathFinder;
 
     public Vector3 Position { get { return transform.position; } }
 
@@ -19,6 +20,7 @@ public class BaseGoose : MonoBehaviour
     {
         moving = false;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
+        pathFinder = gameObject.GetComponent<PathFinder>();
     }
 
     private void Start()
@@ -36,8 +38,9 @@ public class BaseGoose : MonoBehaviour
     public void Die()
     {
         gameManager.player.AddMoney(goldWorth);
-        gameManager.player.Damage(lifeWorth);
         gameManager.geese.Remove(gameObject);
+        if(!moving)
+            gameManager.player.Damage(lifeWorth);
         Destroy(gameObject);
     }
 }
