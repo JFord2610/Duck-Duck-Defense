@@ -8,10 +8,11 @@ public class UnitFactory : MonoBehaviour
     [SerializeField]
     private GameManagerScript gameManager = null;
 
-    public GameObject SpawnGoose(float _speed, float _health, int _lifeWorth, int _goldWorth)
+    public GameObject SpawnGoose(float _speed, float _health, int _lifeWorth, int _goldWorth, Color _color)
     {
         GameObject g = Instantiate(goose);
         BaseGoose s = goose.GetComponent<BaseGoose>();
+        g.GetComponentInChildren<SpriteRenderer>().color = _color;
         s.speed = _speed;
         s.health = _health;
         s.lifeWorth = _lifeWorth;

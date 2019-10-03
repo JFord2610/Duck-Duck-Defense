@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Test Round
   m_EditorClassIdentifier: 
   waves:
-  - {fileID: 11400000, guid: e593c906d0fa37740bf1ddb35d41c8a5, type: 2}
+  - {fileID: 11400000, guid: 3cea074498f299b45b6303a2b1d9bc64, type: 2}
   timeBetweenWaves:
   - 1

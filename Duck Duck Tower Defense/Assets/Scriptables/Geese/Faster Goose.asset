@@ -16,3 +16,4 @@ MonoBehaviour:
   speed: 8
   lifeWorth: 5
   goldWorth: 15
+  color: {r: 1, g: 0.995283, b: 0.995283, a: 1}
