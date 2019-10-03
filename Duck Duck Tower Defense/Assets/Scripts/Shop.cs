@@ -16,6 +16,7 @@ public class Shop : MonoBehaviour
     GameObject duckObj;
     BaseTower duckTower;
     SpriteRenderer duckSprite;
+    SpriteRenderer duckHitCircle;
 
     private void FixedUpdate()
     {
@@ -25,6 +26,7 @@ public class Shop : MonoBehaviour
             duckObj.transform.position = new Vector3(pos.x, pos.y, 0.0f);
         }
     }
+
     private void LateUpdate()
     {
         if (holdingDuck)
@@ -36,7 +38,7 @@ public class Shop : MonoBehaviour
                     holdingDuck = false;
                     gameManager.player.money -= duckBuyPrice;
                     duckTower.alive = true;
-                    duckObj.transform.GetChild(1).gameObject.SetActive(false);
+                    duckHitCircle.gameObject.SetActive(false);
                 }
             }
             if (Input.GetMouseButtonUp(1))
@@ -62,7 +64,10 @@ public class Shop : MonoBehaviour
             duckObj = unitFactory.SpawnDuck();
             duckTower = duckObj.GetComponent<BaseTower>();
             duckSprite = duckTower.GetComponentInChildren<SpriteRenderer>();
+            duckHitCircle = duckObj.transform.GetChild(1).GetComponent<SpriteRenderer>();
             holdingDuck = true;
+            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            duckObj.transform.position = new Vector3(pos.x, pos.y, 0.0f);
         }
         else
         {
