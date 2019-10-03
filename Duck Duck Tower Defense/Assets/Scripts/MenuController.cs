@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    public GameObject mainMenuCanvas;
-    public GameObject pauseMenuCanvas;
-    [SerializeField] Slider volumeSlider;
+    public GameObject mainMenuCanvas = null;
+    public GameObject pauseMenuCanvas = null;
+    [SerializeField] Slider volumeSlider = null;
 
     public void PlayButton_Click()
     {

@@ -16,8 +16,9 @@ public abstract class BaseTower : MonoBehaviour
     }
     private int collisions;
 
-    GameManagerScript gameManager = null;
-    Transform sprite;
+    protected GameManagerScript gameManager = null;
+    protected Transform sprite;
+    protected Animator anim;
 
     private void Start()
     {
@@ -28,6 +29,8 @@ public abstract class BaseTower : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
         sprite = transform.GetChild(0);
+        anim = sprite.gameObject.GetComponent<Animator>();
+        anim.speed = 1 / attackSpeed;
     }
 
     private void Update()

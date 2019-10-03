@@ -29,6 +29,7 @@ public class Gerald : BaseTower
 
     private void AttackGoose(BaseGoose goose)
     {
+        anim.SetTrigger("Attack");
         goose.Damage(damage);
     }
 }
