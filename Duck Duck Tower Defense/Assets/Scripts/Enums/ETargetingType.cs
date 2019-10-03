@@ -2,5 +2,6 @@
 {
     First,
     Closest,
-    Last
+    Last,
+    None
 }

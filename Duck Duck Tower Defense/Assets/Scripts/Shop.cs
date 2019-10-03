@@ -14,7 +14,7 @@ public class Shop : MonoBehaviour
     private bool holdingDuck;
 
     GameObject duckObj;
-    BaseTower duckTower;
+    TowerController duckTower;
     SpriteRenderer duckSprite;
     SpriteRenderer duckHitCircle;
 
@@ -62,7 +62,7 @@ public class Shop : MonoBehaviour
         if (gameManager.player.money > duckBuyPrice)
         {
             duckObj = unitFactory.SpawnDuck();
-            duckTower = duckObj.GetComponent<BaseTower>();
+            duckTower = duckObj.GetComponent<TowerController>();
             duckSprite = duckTower.GetComponentInChildren<SpriteRenderer>();
             duckHitCircle = duckObj.transform.GetChild(1).GetComponent<SpriteRenderer>();
             holdingDuck = true;
