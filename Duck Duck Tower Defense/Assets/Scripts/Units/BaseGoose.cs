@@ -36,6 +36,7 @@ public class BaseGoose : MonoBehaviour
     public void Die()
     {
         gameManager.player.AddMoney(goldWorth);
+        gameManager.player.Damage(lifeWorth);
         gameManager.geese.Remove(gameObject);
         Destroy(gameObject);
     }
