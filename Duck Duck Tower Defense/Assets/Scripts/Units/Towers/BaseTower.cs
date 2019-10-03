@@ -10,7 +10,11 @@ public abstract class BaseTower : MonoBehaviour
     public bool alive = false;
     public ETargetingType targetingType = ETargetingType.Closest;
     
-    public bool colliding { get; private set; }
+    public bool colliding
+    {
+        get { return collisions > 0; }
+    }
+    private int collisions;
 
     GameManagerScript gameManager = null;
     Transform sprite;
@@ -120,13 +124,11 @@ public abstract class BaseTower : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Colliding");
-        colliding = true;
+        collisions++;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        Debug.Log("Not Colliding");
-        colliding = false;
+        collisions--;
     }
 }
