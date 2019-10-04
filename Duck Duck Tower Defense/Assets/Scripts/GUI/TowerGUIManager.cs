@@ -11,7 +11,8 @@ public class TowerGUIManager : MonoBehaviour
     Vector3 towerGUIOffset = new Vector3(0.7f, 0.55f, 0.0f);
 
     TowerController currentTowerController = null;
-    TowerGUIInfo currentTowerGUIInfo = null;
+    UpgradeTree currentUpgradeTree = null;
+    TowerStats currentTowerStats = null;
     string currentTowerName = null;
     bool towerSelected = false;
 
@@ -57,33 +58,34 @@ public class TowerGUIManager : MonoBehaviour
                     towerSelected = false;
                     currentTowerController.selected = false;
                     towerGUIHolder.SetActive(false);
+                    upgradesMenu.SetActive(false);
+                    infoMenu.SetActive(false);
+                    background.SetActive(false);
                 }
             }
         }
     }
 
-    public void PopulateMenus(TowerGUIInfo towerGUIInfo, TowerStats towerStats)
+    public void PopulateMenus(UpgradeTree upgradeTree, TowerStats towerStats)
     {
-        currentTowerGUIInfo = towerGUIInfo;
+        currentUpgradeTree = upgradeTree;
+        currentTowerStats = towerStats;
+        TowerUpgrade upgrade1 = upgradeTree.GetNextInLine(1);
+        TowerUpgrade upgrade2 = upgradeTree.GetNextInLine(2);
         //Upgrade Menu
         Image image1 = upgradesMenu.transform.Find("Upgrade1").GetComponent<Image>();
-        image1.sprite = towerGUIInfo.upgradeInfo1.upgradeSprite;
+        image1.sprite = upgrade1.upgradeSprite;
         Image image2 = upgradesMenu.transform.Find("Upgrade2").GetComponent<Image>();
-        image2.sprite = towerGUIInfo.upgradeInfo2.upgradeSprite;
+        image2.sprite = upgrade2.upgradeSprite;
         Text headerText = upgradesMenu.transform.Find("Header").GetComponent<Text>();
-        headerText.text = towerGUIInfo.upgradeInfo1.upgradeHeader;
+        headerText.text = upgrade1.upgradeName;
         Text descriptionText = upgradesMenu.transform.Find("Description").GetComponent<Text>();
-        descriptionText.text = towerGUIInfo.upgradeInfo1.upgradeDescription;
+        descriptionText.text = upgrade1.upgradeDescription;
 
         //Info Menu
-        Text damageText = infoMenu.transform.Find("Damage").Find("DamageVal").GetComponent<Text>();
-        damageText.text = towerGUIInfo.towerStats.damage.ToString();
-        Text attackRangeText = infoMenu.transform.Find("AttackRange").Find("AttackRangeVal").GetComponent<Text>();
-        attackRangeText.text = towerGUIInfo.towerStats.attackRange.ToString();
-        Text attackSpeedText = infoMenu.transform.Find("AttackSpeed").Find("AttackSpeedVal").GetComponent<Text>();
-        attackSpeedText.text = towerGUIInfo.towerStats.attackSpeed.ToString();
+        PopulateInfo();
 
-        bool hasTargetingType = towerGUIInfo.towerStats.targetingType != ETargetingType.None;
+        bool hasTargetingType = towerStats.targetingType != ETargetingType.None;
         Transform targetingTypeObj = infoMenu.transform.Find("TargetingType");
         if (hasTargetingType)
         {
@@ -94,7 +96,7 @@ public class TowerGUIManager : MonoBehaviour
                 closestButton.onClick.Invoke();
             if (lastIsPressed)
                 lastButton.onClick.Invoke();
-            switch (towerGUIInfo.towerStats.targetingType)
+            switch (towerStats.targetingType)
             {
                 case ETargetingType.First:
                     firstButton.onClick.Invoke();
@@ -111,59 +113,69 @@ public class TowerGUIManager : MonoBehaviour
             targetingTypeObj.gameObject.SetActive(false);
     }
 
-    internal void TowerClicked(TowerController towerController, string towerName, TowerStats towerStats, Vector3 position)
+    private void PopulateInfo()
+    {
+        Text damageText = infoMenu.transform.Find("Damage").Find("DamageVal").GetComponent<Text>();
+        damageText.text = currentTowerStats.damage.ToString();
+        Text attackRangeText = infoMenu.transform.Find("AttackRange").Find("AttackRangeVal").GetComponent<Text>();
+        attackRangeText.text = currentTowerStats.attackRange.ToString();
+        Text attackSpeedText = infoMenu.transform.Find("AttackSpeed").Find("AttackSpeedVal").GetComponent<Text>();
+        attackSpeedText.text = currentTowerStats.attackSpeed.ToString();
+    }
+
+    internal void TowerClicked(TowerController towerController, UpgradeTree upgradeTree, TowerStats towerStats, Vector3 position)
     {
         towerSelected = true;
         towerGUIHolder.transform.position = Camera.main.WorldToScreenPoint(position + towerGUIOffset);
         towerGUIHolder.SetActive(true);
-        foreach (TowerGUIInfo info in towersInfo)
-        {
-            if(info.towerName == towerName)
-            {
-                PopulateMenus(info, towerStats);
-                break;
-            }
-        }
+
+        PopulateMenus(upgradeTree, towerStats);
+
         currentTowerController = towerController;
-        currentTowerName = towerName;
         currentTowerController.selected = true;
     }
 
     public void Upgrade1Button_OnMouseEnter()
     {
+        TowerUpgrade upgrade = currentUpgradeTree.GetNextInLine(1);
         Text headerText = upgradesMenu.transform.Find("Header").GetComponent<Text>();
-        headerText.text = currentTowerGUIInfo.upgradeInfo1.upgradeHeader;
+        headerText.text = upgrade.upgradeName;
         Text descriptionText = upgradesMenu.transform.Find("Description").GetComponent<Text>();
-        descriptionText.text = currentTowerGUIInfo.upgradeInfo1.upgradeDescription;
+        descriptionText.text = upgrade.upgradeDescription;
     }
     public void Upgrade2Button_OnMouseEnter()
     {
+        TowerUpgrade upgrade = currentUpgradeTree.GetNextInLine(2);
         Text headerText = upgradesMenu.transform.Find("Header").GetComponent<Text>();
-        headerText.text = currentTowerGUIInfo.upgradeInfo2.upgradeHeader;
+        headerText.text = upgrade.upgradeName;
         Text descriptionText = upgradesMenu.transform.Find("Description").GetComponent<Text>();
-        descriptionText.text = currentTowerGUIInfo.upgradeInfo2.upgradeDescription;
+        descriptionText.text = upgrade.upgradeDescription;
     }
     public void Upgrade1Button_OnClick()
     {
-        foreach (TowerGUIInfo info in towersInfo)
-        {
-            if (info.towerName == currentTowerName)
-            {
-                currentTowerController.Upgrade(info.upgradeInfo1.towerName);
-                break;
-            }
-        }
+        ApplyUpgradeToStats(1);
+        currentTowerController.Upgrade(currentTowerStats);
+        PopulateInfo();
     }
     public void Upgrade2Button_OnClick()
     {
-        foreach (TowerGUIInfo info in towersInfo)
-        {
-            if (info.towerName == currentTowerName)
-            {
-                currentTowerController.Upgrade(info.upgradeInfo2.towerName);
-                break;
-            }
-        }
+        ApplyUpgradeToStats(2);
+        currentTowerController.Upgrade(currentTowerStats);
+        PopulateInfo();
+    }
+    private void ApplyUpgradeToStats(int line)
+    {
+        TowerUpgrade upgrade = currentUpgradeTree.GetNextInLine(line);
+        TowerStats newTowerStats = (TowerStats)ScriptableObject.CreateInstance("TowerStats");
+
+        float newDamage = currentTowerStats.damage + upgrade.damage;
+        float newAttackSpeed = currentTowerStats.attackSpeed + upgrade.attackSpeed;
+        float newAttackRange = currentTowerStats.attackRange + upgrade.attackRange;
+
+        currentTowerStats = newTowerStats;
+        currentTowerStats.damage = newDamage;
+        currentTowerStats.attackSpeed = newAttackSpeed;
+        currentTowerStats.attackRange = newAttackRange;
     }
 
     public void UpgradesButton_OnClick()

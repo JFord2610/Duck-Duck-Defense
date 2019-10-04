@@ -280,6 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d809f625a4a9d6644a77d30d0ada4994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerInfo: {fileID: 11400000, guid: 31dada843424ba3498f05c17138244be, type: 2}
   towerName: Gerald
   towerStats: {fileID: 11400000, guid: 58588fecabcf5084f88ae8390d37fabc, type: 2}
   _damage: 5
@@ -290,6 +291,7 @@ MonoBehaviour:
   scaleFactor: 0.15
   _sprite: {fileID: 21300000, guid: 09ec0f75e84c0154b9db9fac768d1525, type: 3}
   _animController: {fileID: 9100000, guid: f7d7828349c434e4eb8d9ed501054869, type: 2}
+  upgradeTree: {fileID: 0}
 --- !u!114 &6245466413730359139
 MonoBehaviour:
   m_ObjectHideFlags: 0

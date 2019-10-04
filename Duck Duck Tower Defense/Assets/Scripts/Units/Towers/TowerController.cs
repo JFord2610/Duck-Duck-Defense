@@ -8,6 +8,8 @@ using System;
 [RequireComponent(typeof(BaseTowerType))]
 public class TowerController : MonoBehaviour
 {
+    public TowerInfo towerInfo = null;
+
     [Tooltip("Unique name of the tower used for identification")]
     [SerializeField] string towerName = "";
 
@@ -35,6 +37,8 @@ public class TowerController : MonoBehaviour
     [Tooltip("Animator of the sprite")]
     [SerializeField] AnimatorController _animController = null;
     #endregion
+    
+    public UpgradeTree upgradeTree;
 
     internal bool alive = false;
     internal bool selected = false;
@@ -63,6 +67,7 @@ public class TowerController : MonoBehaviour
         towerType = gameObject.GetComponent<BaseTowerType>();
         attackRadius.size = new Vector2(_attackRange * 2, _attackRange * 2);
         anim.speed = 1 / _attackSpeed;
+        upgradeTree = towerInfo.upgradeTree;
     }
 
     private void FixedUpdate()
@@ -71,26 +76,18 @@ public class TowerController : MonoBehaviour
             towerType.Action();
     }
 
-    internal void Upgrade(string newTowerName)
+    internal void Upgrade(TowerStats newTowerStats)
     {
-        TowerInfo info = gameManager.GetTower(newTowerName);
-        towerName = info.towerName;
+        towerStats = newTowerStats;
 
-        //stats
-        towerStats = info.towerStats;
-        _damage = info.towerStats.damage;
-        _attackRange = info.towerStats.attackRange;
-        _attackSpeed = info.towerStats.attackSpeed;
-        _targetingType = info.towerStats.targetingType;
+        _damage = newTowerStats.damage;
+        _attackSpeed = newTowerStats.attackSpeed;
+        _attackRange = newTowerStats.attackRange;
 
-        //visuals
-        towerVisuals = info.towerVisuals;
-        _sprite = info.towerVisuals.sprite;
-        _animController = info.towerVisuals.animController;
+
+        //To Do: change sprites and other upgrade specific stuff
+
         attackRadius.size = new Vector2(_attackRange * 2, _attackRange * 2);
-
-        Destroy(towerType);
-        towerType = (BaseTowerType)gameObject.AddComponent(Type.GetType(info.towerType));
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -104,7 +101,7 @@ public class TowerController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        towerGUIManager.TowerClicked(this, towerName, towerStats, transform.position);
+        towerGUIManager.TowerClicked(this, upgradeTree, towerStats, transform.position);
     }
 
     private void OnMouseEnter()

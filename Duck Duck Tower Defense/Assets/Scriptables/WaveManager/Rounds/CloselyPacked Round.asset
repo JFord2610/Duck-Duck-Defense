@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b72f1ed7e3bf6be48b4ef604afe19b14, type: 3}
+  m_Name: CloselyPacked Round
+  m_EditorClassIdentifier: 
+  waves:
+  - {fileID: 11400000, guid: e593c906d0fa37740bf1ddb35d41c8a5, type: 2}
+  timeBetweenWaves: []
