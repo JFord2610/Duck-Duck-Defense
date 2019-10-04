@@ -4,7 +4,7 @@ public class UnitFactory : MonoBehaviour
     [SerializeField]
     private GameObject goose = null;
     [SerializeField]
-    private GameObject duck = null;
+    private GameObject tower = null;
     [SerializeField]
     private GameManagerScript gameManager = null;
 
@@ -21,9 +21,9 @@ public class UnitFactory : MonoBehaviour
         return g;
     }
 
-    public GameObject SpawnDuck()
+    public GameObject SpawnTower()
     {
-        GameObject d = Instantiate(duck);
+        GameObject d = Instantiate(tower);
         return d;
     }
 }

@@ -2,18 +2,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class TowerGUIManager : MonoBehaviour
 {
-    public TowerGUIInfo[] towersInfo;
+    [SerializeField] TowerGUIInfo[] towersInfo = null;
     Vector3 towerGUIOffset = new Vector3(0.7f, 0.55f, 0.0f);
 
-    TowerGUIInfo currentTowerInfo = null;
-    TowerStats currentTowerStats = null;
+    TowerController currentTowerController = null;
+    TowerGUIInfo currentTowerGUIInfo = null;
     string currentTowerName = null;
+    bool towerSelected = false;
 
+    public Canvas gameOverlayCanvas = null;
     public GameObject towerGUIHolder = null;
+    public EventSystem eventSystem = null;
     GameObject background = null;
     GameObject upgradesMenu = null;
     GameObject infoMenu = null;
@@ -36,9 +40,31 @@ public class TowerGUIManager : MonoBehaviour
         closestButton = targetingTypeObj.Find("Closest").GetComponent<Button>();
         lastButton = targetingTypeObj.Find("Last").GetComponent<Button>();
     }
-    
+
+    private void Update()
+    {
+        if(towerSelected)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Vector3 mousePos = Input.mousePosition;
+                UnityEngine.EventSystems.PointerEventData ped = new UnityEngine.EventSystems.PointerEventData(eventSystem);
+                ped.position = mousePos;
+                List<RaycastResult> resultList = new List<RaycastResult>();
+                gameOverlayCanvas.GetComponent<GraphicRaycaster>().Raycast(ped, resultList);
+                if(resultList.Count == 0 && !currentTowerController.isHovered)
+                {
+                    towerSelected = false;
+                    currentTowerController.selected = false;
+                    towerGUIHolder.SetActive(false);
+                }
+            }
+        }
+    }
+
     public void PopulateMenus(TowerGUIInfo towerGUIInfo, TowerStats towerStats)
     {
+        currentTowerGUIInfo = towerGUIInfo;
         //Upgrade Menu
         Image image1 = upgradesMenu.transform.Find("Upgrade1").GetComponent<Image>();
         image1.sprite = towerGUIInfo.upgradeInfo1.upgradeSprite;
@@ -85,8 +111,9 @@ public class TowerGUIManager : MonoBehaviour
             targetingTypeObj.gameObject.SetActive(false);
     }
 
-    internal void TowerClicked(string towerName, TowerStats towerStats, Vector3 position)
+    internal void TowerClicked(TowerController towerController, string towerName, TowerStats towerStats, Vector3 position)
     {
+        towerSelected = true;
         towerGUIHolder.transform.position = Camera.main.WorldToScreenPoint(position + towerGUIOffset);
         towerGUIHolder.SetActive(true);
         foreach (TowerGUIInfo info in towersInfo)
@@ -94,6 +121,46 @@ public class TowerGUIManager : MonoBehaviour
             if(info.towerName == towerName)
             {
                 PopulateMenus(info, towerStats);
+                break;
+            }
+        }
+        currentTowerController = towerController;
+        currentTowerName = towerName;
+        currentTowerController.selected = true;
+    }
+
+    public void Upgrade1Button_OnMouseEnter()
+    {
+        Text headerText = upgradesMenu.transform.Find("Header").GetComponent<Text>();
+        headerText.text = currentTowerGUIInfo.upgradeInfo1.upgradeHeader;
+        Text descriptionText = upgradesMenu.transform.Find("Description").GetComponent<Text>();
+        descriptionText.text = currentTowerGUIInfo.upgradeInfo1.upgradeDescription;
+    }
+    public void Upgrade2Button_OnMouseEnter()
+    {
+        Text headerText = upgradesMenu.transform.Find("Header").GetComponent<Text>();
+        headerText.text = currentTowerGUIInfo.upgradeInfo2.upgradeHeader;
+        Text descriptionText = upgradesMenu.transform.Find("Description").GetComponent<Text>();
+        descriptionText.text = currentTowerGUIInfo.upgradeInfo2.upgradeDescription;
+    }
+    public void Upgrade1Button_OnClick()
+    {
+        foreach (TowerGUIInfo info in towersInfo)
+        {
+            if (info.towerName == currentTowerName)
+            {
+                currentTowerController.Upgrade(info.upgradeInfo1.towerName);
+                break;
+            }
+        }
+    }
+    public void Upgrade2Button_OnClick()
+    {
+        foreach (TowerGUIInfo info in towersInfo)
+        {
+            if (info.towerName == currentTowerName)
+            {
+                currentTowerController.Upgrade(info.upgradeInfo2.towerName);
                 break;
             }
         }

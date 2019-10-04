@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEditor.Animations;
+using System;
 
 [RequireComponent(typeof(BaseTowerType))]
 public class TowerController : MonoBehaviour
@@ -35,15 +36,15 @@ public class TowerController : MonoBehaviour
     [SerializeField] AnimatorController _animController = null;
     #endregion
 
-    [HideInInspector]
-    public bool alive = false;
+    internal bool alive = false;
+    internal bool selected = false;
+    internal bool isHovered = false;
 
-    public bool colliding
+    internal bool colliding
     {
         get { return collisions > 0; }
     }
     private int collisions = 0;
-    bool selected = false;
 
     GameManagerScript gameManager = null;
     TowerGUIManager towerGUIManager = null;
@@ -70,6 +71,28 @@ public class TowerController : MonoBehaviour
             towerType.Action();
     }
 
+    internal void Upgrade(string newTowerName)
+    {
+        TowerInfo info = gameManager.GetTower(newTowerName);
+        towerName = info.towerName;
+
+        //stats
+        towerStats = info.towerStats;
+        _damage = info.towerStats.damage;
+        _attackRange = info.towerStats.attackRange;
+        _attackSpeed = info.towerStats.attackSpeed;
+        _targetingType = info.towerStats.targetingType;
+
+        //visuals
+        towerVisuals = info.towerVisuals;
+        _sprite = info.towerVisuals.sprite;
+        _animController = info.towerVisuals.animController;
+        attackRadius.size = new Vector2(_attackRange * 2, _attackRange * 2);
+
+        Destroy(towerType);
+        towerType = (BaseTowerType)gameObject.AddComponent(Type.GetType(info.towerType));
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         collisions++;
@@ -81,19 +104,20 @@ public class TowerController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        selected = true;
-        towerGUIManager.TowerClicked(towerName, towerStats, transform.position);
+        towerGUIManager.TowerClicked(this, towerName, towerStats, transform.position);
     }
 
     private void OnMouseEnter()
     {
         if (!alive) return;
+        isHovered = true;
         StartCoroutine("ScaleUp");
         attackRadius.gameObject.SetActive(true);
     }
     private void OnMouseExit()
     {
         if (!alive) return;
+        isHovered = false;
         StartCoroutine("ScaleDown");
         attackRadius.gameObject.SetActive(false);
     }
@@ -114,7 +138,7 @@ public class TowerController : MonoBehaviour
         }
     }
 
-    public List<BaseGoose> GetNearbyGeese()
+    internal List<BaseGoose> GetNearbyGeese()
     {
         List<BaseGoose> geese = new List<BaseGoose>();
 
@@ -127,7 +151,7 @@ public class TowerController : MonoBehaviour
 
         return geese;
     }
-    public BaseGoose GetClosestGoose()
+    internal BaseGoose GetClosestGoose()
     {
         BaseGoose goose = null;
         Vector3 pos = transform.position;
@@ -147,7 +171,7 @@ public class TowerController : MonoBehaviour
 
         return goose;
     }
-    public BaseGoose GetFirstGoose()
+    internal BaseGoose GetFirstGoose()
     {
         BaseGoose goose = null;
         Vector3 pos = transform.position;
@@ -164,7 +188,7 @@ public class TowerController : MonoBehaviour
         }
         return goose;
     }
-    public BaseGoose GetLastGoose()
+    internal BaseGoose GetLastGoose()
     {
         BaseGoose goose = null;
         Vector3 pos = transform.position;
@@ -182,7 +206,7 @@ public class TowerController : MonoBehaviour
         return goose;
     }
 
-    public void RotateToPoint(Vector3 p)
+    internal void RotateToPoint(Vector3 p)
     {
         Vector3 dir = p - spriteTransform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
