@@ -1,13 +1,18 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEditor.Animations;
 
 [RequireComponent(typeof(BaseTowerType))]
 public class TowerController : MonoBehaviour
 {
-    public TowerInfo tInfo = null;
+    [Tooltip("Unique name of the tower used for identification")]
+    [SerializeField] string towerName = "";
 
+    #region Tower Stats
     [Header("Tower Stats")]
+    public TowerStats towerStats = null;
     [Tooltip("Damage by the tower to enemies")]
     [SerializeField] float _damage = 0;
     [Tooltip("Effective range of tower")]
@@ -16,89 +21,19 @@ public class TowerController : MonoBehaviour
     [SerializeField] float _attackSpeed = 0;
     [Tooltip("Default targeting property of tower")]
     [SerializeField] ETargetingType _targetingType = ETargetingType.Closest;
+    #endregion
 
-    public float Damage
-    {
-        get
-        {
-            if (tInfo == null) return _damage;
-            else
-            {
-                _damage = tInfo.damage;
-                return _damage;
-            }
-        }
-        set
-        {
-            _damage = value;
-            if(tInfo != null)
-                tInfo.damage = _damage;
-        }
-    }
-    public float AttackRange
-    {
-        get
-        {
-            if (tInfo == null) return _attackRange;
-            else
-            {
-                _attackRange = tInfo.attackRange;
-                return _attackRange;
-            }
-        }
-        set
-        {
-            _attackRange = value;
-            if (tInfo != null)
-                tInfo.attackRange = _attackRange;
-        }
-    }
-    public float AttackSpeed
-    {
-        get
-        {
-            if (tInfo == null) return _attackSpeed;
-            else
-            {
-                _attackSpeed = tInfo.attackSpeed;
-                return _attackSpeed;
-            }
-        }
-        set
-        {
-            _attackSpeed = value;
-            if (tInfo != null)
-                tInfo.attackSpeed = _attackSpeed;
-        }
-    }
-    public ETargetingType TargetingType
-    {
-        get
-        {
-            if (tInfo == null) return _targetingType;
-            else
-            {
-                _targetingType = tInfo.targetingType;
-                return _targetingType;
-            }
-        }
-        set
-        {
-            _targetingType = value;
-            if (tInfo != null)
-                tInfo.targetingType = _targetingType;
-        }
-    }
-
+    #region Tower Visuals
     [Space]
-
     [Header("Visuals")]
+    public TowerVisuals towerVisuals = null;
     [Tooltip("Factor of growth when hovered overwith mouse")]
     [SerializeField] float scaleFactor = 0.15f;
     [Tooltip("Sprite of the tower")]
-    public SpriteRenderer sprite = null;
+    [SerializeField] Sprite _sprite = null;
     [Tooltip("Animator of the sprite")]
-    public Animator anim = null;
+    [SerializeField] AnimatorController _animController = null;
+    #endregion
 
     [HideInInspector]
     public bool alive = false;
@@ -108,18 +43,23 @@ public class TowerController : MonoBehaviour
         get { return collisions > 0; }
     }
     private int collisions = 0;
+    bool selected = false;
 
     GameManagerScript gameManager = null;
+    TowerGUIManager towerGUIManager = null;
     SpriteRenderer attackRadius = null;
     Transform spriteTransform = null;
     BaseTowerType towerType = null;
+    Animator anim = null;
 
     private void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
+        towerGUIManager = GameObject.Find("TowerGUIManager").GetComponent<TowerGUIManager>();
         attackRadius = transform.GetChild(2).gameObject.GetComponent<SpriteRenderer>();
+        spriteTransform = transform.GetChild(0).transform;
+        anim = spriteTransform.gameObject.GetComponent<Animator>();
         towerType = gameObject.GetComponent<BaseTowerType>();
-        spriteTransform = sprite.transform;
         attackRadius.size = new Vector2(_attackRange * 2, _attackRange * 2);
         anim.speed = 1 / _attackSpeed;
     }
@@ -137,6 +77,12 @@ public class TowerController : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         collisions--;
+    }
+
+    private void OnMouseDown()
+    {
+        selected = true;
+        towerGUIManager.TowerClicked(towerName, towerStats, transform.position);
     }
 
     private void OnMouseEnter()
@@ -245,10 +191,17 @@ public class TowerController : MonoBehaviour
 
     private void OnValidate()
     {
-        if (tInfo == null) return;
-        tInfo.damage = _damage;
-        tInfo.attackSpeed = _attackSpeed;
-        tInfo.attackRange = _attackRange;
-        tInfo.targetingType = _targetingType;
+        if (towerStats != null)
+        {
+            towerStats.damage = _damage;
+            towerStats.attackSpeed = _attackSpeed;
+            towerStats.attackRange = _attackRange;
+            towerStats.targetingType = _targetingType;
+        }
+        if (towerVisuals != null)
+        {
+            towerVisuals.sprite = _sprite;
+            towerVisuals.animController = _animController;
+        }
     }
 }

@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 7312532149408034385}
   - component: {fileID: 6388012715966534829}
   - component: {fileID: 6245466413730359139}
+  - component: {fileID: 3944812186341283258}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -302,14 +303,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d809f625a4a9d6644a77d30d0ada4994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tInfo: {fileID: 11400000, guid: 58588fecabcf5084f88ae8390d37fabc, type: 2}
+  towerName: Gerald
+  towerStats: {fileID: 11400000, guid: 58588fecabcf5084f88ae8390d37fabc, type: 2}
   _damage: 5
   _attackRange: 4
   _attackSpeed: 2
   _targetingType: 0
+  towerVisuals: {fileID: 11400000, guid: 32a44ab14152c294aa3abae8e4476ebe, type: 2}
   scaleFactor: 0.15
-  sprite: {fileID: 7030542922018303384}
-  anim: {fileID: 995058843982208626}
+  _sprite: {fileID: 21300000, guid: 09ec0f75e84c0154b9db9fac768d1525, type: 3}
+  _animController: {fileID: 9100000, guid: f7d7828349c434e4eb8d9ed501054869, type: 2}
   alive: 0
 --- !u!114 &6245466413730359139
 MonoBehaviour:
@@ -323,7 +326,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e22887d8c228e46429dea9520e052db5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tInfo: {fileID: 0}
+--- !u!60 &3944812186341283258
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5718340254931879210}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0, y: 1}
+      - {x: -0.95105654, y: 0.30901697}
+      - {x: -0.5877852, y: -0.80901706}
+      - {x: 0.58778536, y: -0.80901694}
+      - {x: 0.9510565, y: 0.30901712}
 --- !u!1 &6059369363277481363
 GameObject:
   m_ObjectHideFlags: 0

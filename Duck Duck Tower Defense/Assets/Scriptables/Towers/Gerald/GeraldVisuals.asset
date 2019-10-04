@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f59b53959bc75954a94e8027a80b2429, type: 3}
+  m_Name: GeraldVisuals
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 09ec0f75e84c0154b9db9fac768d1525, type: 3}
+  animController: {fileID: 9100000, guid: f7d7828349c434e4eb8d9ed501054869, type: 2}

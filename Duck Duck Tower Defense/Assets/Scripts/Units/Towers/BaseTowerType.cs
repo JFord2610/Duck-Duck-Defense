@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public abstract class BaseTowerType : MonoBehaviour
 {
-    protected TowerInfo tInfo;
+    protected TowerStats tInfo;
 
     protected GameManagerScript gameManager = null;
     protected TowerController towerController = null;
@@ -19,7 +19,7 @@ public abstract class BaseTowerType : MonoBehaviour
 
     private void Start()
     {
-        tInfo = towerController.tInfo;
+        tInfo = towerController.towerStats;
         Init();
     }
 

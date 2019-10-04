@@ -2,6 +2,14 @@
 
 public class Gerald : BaseTowerType
 {
+    Animator anim = null;
+
+    protected override void Init()
+    {
+        base.Init();
+        anim = gameObject.GetComponentInChildren<Animator>();
+    }
+
     public override void Action()
     {
         BaseGoose targetGoose = null;
@@ -29,7 +37,7 @@ public class Gerald : BaseTowerType
 
     private void AttackGoose(BaseGoose goose)
     {
-        towerController.anim.SetTrigger("Attack");
+        anim.SetTrigger("Attack");
         goose.Damage(tInfo.damage);
     }
 }

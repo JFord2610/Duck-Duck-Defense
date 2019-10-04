@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ab193a7595ec3d47bfa5ec16042d411, type: 3}
+  m_Name: Gerald GUI Info
+  m_EditorClassIdentifier: 
+  towerName: Gerald
+  towerStats: {fileID: 11400000, guid: 58588fecabcf5084f88ae8390d37fabc, type: 2}
+  upgradeInfo1: {fileID: 11400000, guid: d78dd56b0d3cadd4db27447d1867a6cd, type: 2}
+  upgradeInfo2: {fileID: 11400000, guid: 216491db6b339784f8a4982fc65261bc, type: 2}

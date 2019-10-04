@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[CreateAssetMenu(menuName ="Tower Info")]
-public class TowerInfo : ScriptableObject
+[CreateAssetMenu(menuName = "Towers/Stats")]
+public class TowerStats : ScriptableObject
 {
     public float damage = 0;
     public float attackSpeed = 0;

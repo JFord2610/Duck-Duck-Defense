@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class PathManager : MonoBehaviour
 {
     public Path path;
@@ -33,7 +33,7 @@ public class PathManager : MonoBehaviour
     public bool clearPoints = false;
     public bool showGizmos = false;
 #if UNITY_EDITOR
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         if (clearPoints)
         {
