@@ -2,9 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public abstract class BaseTowerType : MonoBehaviour
+public abstract class BaseAction : MonoBehaviour
 {
-    protected TowerStats tInfo;
+    protected TowerStats tStats;
 
     protected GameManagerScript gameManager = null;
     protected TowerController towerController = null;
@@ -19,20 +19,17 @@ public abstract class BaseTowerType : MonoBehaviour
 
     private void Start()
     {
-        tInfo = towerController.towerStats;
+        tStats = towerController.towerStats;
         Init();
     }
 
-    protected virtual void Init()
-    {
-
-    }
+    protected abstract void Init();
 
     public abstract void Action();
 
     IEnumerator Cooldown()
     {
-        yield return new WaitForSeconds(1 / tInfo.attackSpeed);
+        yield return new WaitForSeconds(1 / towerController._attackSpeed);
         onCooldown = false;
     }
 }

@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class TowerGUIManager : MonoBehaviour
 {
-    [SerializeField] TowerGUIInfo[] towersInfo = null;
     Vector3 towerGUIOffset = new Vector3(0.7f, 0.55f, 0.0f);
 
     TowerController currentTowerController = null;
@@ -153,29 +152,14 @@ public class TowerGUIManager : MonoBehaviour
     }
     public void Upgrade1Button_OnClick()
     {
-        ApplyUpgradeToStats(1);
-        currentTowerController.Upgrade(currentTowerStats);
-        PopulateInfo();
+        currentTowerController.Upgrade(1);
+        PopulateMenus(currentUpgradeTree, currentTowerStats);
     }
     public void Upgrade2Button_OnClick()
     {
-        ApplyUpgradeToStats(2);
-        currentTowerController.Upgrade(currentTowerStats);
+        currentTowerController.Upgrade(2);
         PopulateInfo();
-    }
-    private void ApplyUpgradeToStats(int line)
-    {
-        TowerUpgrade upgrade = currentUpgradeTree.GetNextInLine(line);
-        TowerStats newTowerStats = (TowerStats)ScriptableObject.CreateInstance("TowerStats");
-
-        float newDamage = currentTowerStats.damage + upgrade.damage;
-        float newAttackSpeed = currentTowerStats.attackSpeed + upgrade.attackSpeed;
-        float newAttackRange = currentTowerStats.attackRange + upgrade.attackRange;
-
-        currentTowerStats = newTowerStats;
-        currentTowerStats.damage = newDamage;
-        currentTowerStats.attackSpeed = newAttackSpeed;
-        currentTowerStats.attackRange = newAttackRange;
+        PopulateMenus(currentUpgradeTree, currentTowerStats);
     }
 
     public void UpgradesButton_OnClick()

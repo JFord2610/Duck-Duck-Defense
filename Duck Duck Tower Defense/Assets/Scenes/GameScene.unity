@@ -2080,6 +2080,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 702772920}
   m_CullTransparentMesh: 0
+--- !u!1 &756715957
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 756715959}
+  - component: {fileID: 756715958}
+  m_Layer: 0
+  m_Name: ProjectileFactory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &756715958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756715957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 883de587c1f87cb4bbdcb378f45a401e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabs:
+  - {fileID: 8210028342367376057, guid: 46eb861e9951fc2418329ff680149052, type: 3}
+--- !u!4 &756715959
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756715957}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &795276946
 GameObject:
   m_ObjectHideFlags: 0
@@ -7948,8 +7993,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towers:
   - {fileID: 11400000, guid: 31dada843424ba3498f05c17138244be, type: 2}
-  - {fileID: 11400000, guid: 64f9d6485af4f7b4192d1c68acf5f3b8, type: 2}
-  - {fileID: 11400000, guid: 14a13646c27482548b674d86818371c9, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &1870122235
 Transform:
   m_ObjectHideFlags: 0

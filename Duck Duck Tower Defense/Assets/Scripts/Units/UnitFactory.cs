@@ -23,7 +23,7 @@ public class UnitFactory : MonoBehaviour
 
     public GameObject SpawnTower()
     {
-        GameObject d = Instantiate(tower);
-        return d;
+        GameObject t = Instantiate(tower);
+        return t;
     }
 }

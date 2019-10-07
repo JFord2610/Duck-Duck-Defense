@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb34b9a59cee664587659d2e827e32d, type: 3}
+  m_Name: GeraldUpgradeTree
+  m_EditorClassIdentifier: 
+  towerName: Gerald
+  line1:
+  - {fileID: 11400000, guid: 7d37d922eded7ef47b4148419a303799, type: 2}
+  - {fileID: 11400000, guid: 9357cf943e8ffde4493aa3181708178b, type: 2}
+  - {fileID: 11400000, guid: 4dbb4313a21722a499f79e44a3e88e8d, type: 2}
+  - {fileID: 11400000, guid: c7fd5d01b7abfdd469848f3dd5501e36, type: 2}
+  line2:
+  - {fileID: 11400000, guid: 5bcb798b7f6d13d489f3747837d74a07, type: 2}
+  - {fileID: 11400000, guid: c7439346eb7aa4a4883e48986ad4ae1a, type: 2}
+  - {fileID: 11400000, guid: d957dbd7e92ad7d498c6801ec3d560f4, type: 2}
+  - {fileID: 11400000, guid: efb5ef595e9077a4793b1d0e3d9e6952, type: 2}

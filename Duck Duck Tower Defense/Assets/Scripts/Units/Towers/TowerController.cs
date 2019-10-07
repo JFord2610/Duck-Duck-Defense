@@ -5,7 +5,7 @@ using System.Collections;
 using UnityEditor.Animations;
 using System;
 
-[RequireComponent(typeof(BaseTowerType))]
+[RequireComponent(typeof(BaseAction))]
 public class TowerController : MonoBehaviour
 {
     public TowerInfo towerInfo = null;
@@ -17,13 +17,13 @@ public class TowerController : MonoBehaviour
     [Header("Tower Stats")]
     public TowerStats towerStats = null;
     [Tooltip("Damage by the tower to enemies")]
-    [SerializeField] float _damage = 0;
+    public float _damage = 0;
     [Tooltip("Effective range of tower")]
-    [SerializeField] float _attackRange = 0;
+    public float _attackRange = 0;
     [Tooltip("Speed of the towers action call measured in attacks per second")]
-    [SerializeField] float _attackSpeed = 0;
+    public float _attackSpeed = 0;
     [Tooltip("Default targeting property of tower")]
-    [SerializeField] ETargetingType _targetingType = ETargetingType.Closest;
+    public ETargetingType _targetingType = ETargetingType.Closest;
     #endregion
 
     #region Tower Visuals
@@ -39,6 +39,7 @@ public class TowerController : MonoBehaviour
     #endregion
     
     public UpgradeTree upgradeTree;
+    public List<Modifier> modifiers;
 
     internal bool alive = false;
     internal bool selected = false;
@@ -54,7 +55,7 @@ public class TowerController : MonoBehaviour
     TowerGUIManager towerGUIManager = null;
     SpriteRenderer attackRadius = null;
     Transform spriteTransform = null;
-    BaseTowerType towerType = null;
+    BaseAction towerType = null;
     Animator anim = null;
 
     private void Awake()
@@ -64,10 +65,10 @@ public class TowerController : MonoBehaviour
         attackRadius = transform.GetChild(2).gameObject.GetComponent<SpriteRenderer>();
         spriteTransform = transform.GetChild(0).transform;
         anim = spriteTransform.gameObject.GetComponent<Animator>();
-        towerType = gameObject.GetComponent<BaseTowerType>();
+        towerType = gameObject.GetComponent<BaseAction>();
         attackRadius.size = new Vector2(_attackRange * 2, _attackRange * 2);
         anim.speed = 1 / _attackSpeed;
-        upgradeTree = towerInfo.upgradeTree;
+        upgradeTree = towerInfo.upgradeTree.CreateCopy();
     }
 
     private void FixedUpdate()
@@ -76,16 +77,51 @@ public class TowerController : MonoBehaviour
             towerType.Action();
     }
 
-    internal void Upgrade(TowerStats newTowerStats)
+    internal void AddModifier(Modifier mod)
     {
-        towerStats = newTowerStats;
+        if((mod.modType & EModifierType.Stats) == EModifierType.Stats)
+        {
+            _damage += mod.damage;
+            _attackRange += mod.attackRange;
+            _attackSpeed += mod.attackSpeed;
+        }
+        if((mod.modType & EModifierType.Action) == EModifierType.Action)
+        {
+            gameObject.AddComponent(Type.GetType(mod.action));
+        }
+        if ((mod.modType & EModifierType.Visual) == EModifierType.Visual)
+        {
+            //Do visual stuff
+        }
+        modifiers.Add(mod);
+    }
 
-        _damage = newTowerStats.damage;
-        _attackSpeed = newTowerStats.attackSpeed;
-        _attackRange = newTowerStats.attackRange;
+    internal void RemoveModifier(Modifier mod)
+    {
+        if ((mod.modType & EModifierType.Stats) == EModifierType.Stats)
+        {
+            _damage -= mod.damage;
+            _attackRange -= mod.attackRange;
+            _attackSpeed -= mod.attackSpeed;
+        }
+        if ((mod.modType & EModifierType.Action) == EModifierType.Action)
+        {
+            Destroy(gameObject.GetComponent(mod.action));
+        }
+        if ((mod.modType & EModifierType.Visual) == EModifierType.Visual)
+        {
+            //Do visual stuff
+        }
+        modifiers.Remove(mod);
+    }
 
-
-        //To Do: change sprites and other upgrade specific stuff
+    internal void Upgrade(int line)
+    {
+        TowerUpgrade upgrade = upgradeTree.GetNextInLine(line);
+        if (upgrade == null)
+            return;
+        AddModifier(upgrade.modifier);
+        upgrade.hasUpgrade = true;
 
         attackRadius.size = new Vector2(_attackRange * 2, _attackRange * 2);
     }

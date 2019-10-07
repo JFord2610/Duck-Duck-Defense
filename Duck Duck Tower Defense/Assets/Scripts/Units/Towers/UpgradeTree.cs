@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ public class UpgradeTree : ScriptableObject
     public TowerUpgrade[] line1 = new TowerUpgrade[4];
     public TowerUpgrade[] line2 = new TowerUpgrade[4];
 
-    internal int numberOfUpgrades
+    public int numberOfUpgrades
     {
         get
         {
@@ -24,7 +25,22 @@ public class UpgradeTree : ScriptableObject
             return num;
         }
     }
-    internal bool atMaxUpgrades { get { return numberOfUpgrades >= 6; } }
+    public bool atMaxUpgrades { get { return numberOfUpgrades >= 6; } }
+
+    public UpgradeTree CreateCopy()
+    {
+        UpgradeTree newUpgradeTree = CreateInstance<UpgradeTree>();
+
+        newUpgradeTree.towerName = towerName;
+        newUpgradeTree.line1 = new TowerUpgrade[4];
+        for (int i = 0; i < 4; i++)
+        {
+            newUpgradeTree.line1[i] = line1[i].CreateCopy();
+            newUpgradeTree.line2[i] = line2[i].CreateCopy();
+        }
+
+        return newUpgradeTree;
+    }
 
     public TowerUpgrade GetNextInLine(int line)
     {
@@ -39,7 +55,7 @@ public class UpgradeTree : ScriptableObject
         else if (line == 2)
             for (int i = 0; i < line2.Length; i++)
             {
-                if (line1[i].hasUpgrade)
+                if (line2[i].hasUpgrade)
                     continue;
                 else
                     return line2[i];

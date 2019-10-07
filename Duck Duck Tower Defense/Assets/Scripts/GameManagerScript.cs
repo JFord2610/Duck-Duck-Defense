@@ -4,23 +4,17 @@ using UnityEngine;
 
 public class GameManagerScript : MonoBehaviour
 {
-    internal List<GameObject> geese { get; private set; }
-    internal PlayerHolder player { get; private set; }
+    public List<GameObject> geese { get; private set; }
+    public PlayerHolder player { get; private set; }
+    public ProjectileFactory projectileFactory { get; private set; }
+
     public TowerInfo[] towers;
 
     private void Awake()
     {
         geese = new List<GameObject>();
         player = GameObject.Find("PlayerHolder").GetComponent<PlayerHolder>();
+        projectileFactory = GameObject.Find("ProjectileFactory").GetComponent<ProjectileFactory>();
     }
 
-    internal TowerInfo GetTower(string name)
-    {
-        foreach (TowerInfo towerInfo in towers)
-        {
-            if (towerInfo.towerName == name)
-                return towerInfo;
-        }
-        return null;
-    }
 }

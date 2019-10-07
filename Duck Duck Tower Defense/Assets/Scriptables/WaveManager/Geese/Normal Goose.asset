@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Normal Goose
   m_EditorClassIdentifier: Assembly-CSharp::BaseGoose
   health: 10
-  speed: 4
+  speed: 3
   lifeWorth: 5
   goldWorth: 10
   color: {r: 1, g: 1, b: 1, a: 1}
