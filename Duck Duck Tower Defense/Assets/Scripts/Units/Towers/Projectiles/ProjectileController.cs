@@ -59,13 +59,13 @@ public class ProjectileController : MonoBehaviour
                     return;
                 }
             goose2 = FindNearestTarget();
+            goose1.GetComponent<BaseGoose>().Damage(damage);
             if (goose2 == null || bounceCount >= bounceTotal)
                 Destroy(gameObject);
             else
             {
                 bouncing = true;
                 target = goose2;
-                goose1.GetComponent<BaseGoose>().Damage(damage);
                 geeseHit.Add(goose1);
                 bounceCount++;
             }

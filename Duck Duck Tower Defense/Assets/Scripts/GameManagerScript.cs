@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,9 @@ public class GameManagerScript : MonoBehaviour
 
     public TowerInfo[] towers;
 
+    public bool playerBusy { get { return playerBusyCount > 0; } }
+    int playerBusyCount = 0;
+
     private void Awake()
     {
         geese = new List<GameObject>();
@@ -17,4 +21,13 @@ public class GameManagerScript : MonoBehaviour
         projectileFactory = GameObject.Find("ProjectileFactory").GetComponent<ProjectileFactory>();
     }
 
+    public void IncrementPlayerBusy()
+    {
+        playerBusyCount++;
+    }
+
+    public void DecrementPlayerBusy()
+    {
+        playerBusyCount--;
+    }
 }

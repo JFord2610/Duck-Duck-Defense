@@ -9,6 +9,7 @@ public class TowerGUIManager : MonoBehaviour
 {
     Vector3 towerGUIOffset = new Vector3(0.7f, 0.55f, 0.0f);
 
+    GameManagerScript gameManager = null;
     TowerController currentTowerController = null;
     UpgradeTree currentUpgradeTree = null;
     TowerStats currentTowerStats = null;
@@ -32,6 +33,7 @@ public class TowerGUIManager : MonoBehaviour
 
     private void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
         background = towerGUIHolder.transform.Find("Background").gameObject;
         upgradesMenu = towerGUIHolder.transform.Find("UpgradesMenu").gameObject;
         infoMenu = towerGUIHolder.transform.Find("InfoMenu").gameObject;
@@ -43,16 +45,17 @@ public class TowerGUIManager : MonoBehaviour
 
     private void Update()
     {
-        if(towerSelected)
+        if (towerSelected)
         {
             if (Input.GetMouseButtonDown(0))
             {
+                gameManager.DecrementPlayerBusy();
                 Vector3 mousePos = Input.mousePosition;
-                UnityEngine.EventSystems.PointerEventData ped = new UnityEngine.EventSystems.PointerEventData(eventSystem);
+                PointerEventData ped = new PointerEventData(eventSystem);
                 ped.position = mousePos;
                 List<RaycastResult> resultList = new List<RaycastResult>();
                 gameOverlayCanvas.GetComponent<GraphicRaycaster>().Raycast(ped, resultList);
-                if(resultList.Count == 0 && !currentTowerController.isHovered)
+                if (resultList.Count == 0 && !currentTowerController.isHovered)
                 {
                     towerSelected = false;
                     currentTowerController.selected = false;
@@ -71,15 +74,27 @@ public class TowerGUIManager : MonoBehaviour
         currentTowerStats = towerStats;
         TowerUpgrade upgrade1 = upgradeTree.GetNextInLine(1);
         TowerUpgrade upgrade2 = upgradeTree.GetNextInLine(2);
-        //Upgrade Menu
         Image image1 = upgradesMenu.transform.Find("Upgrade1").GetComponent<Image>();
-        image1.sprite = upgrade1.upgradeSprite;
         Image image2 = upgradesMenu.transform.Find("Upgrade2").GetComponent<Image>();
-        image2.sprite = upgrade2.upgradeSprite;
         Text headerText = upgradesMenu.transform.Find("Header").GetComponent<Text>();
-        headerText.text = upgrade1.upgradeName;
         Text descriptionText = upgradesMenu.transform.Find("Description").GetComponent<Text>();
-        descriptionText.text = upgrade1.upgradeDescription;
+        //Upgrade Menu
+        if (upgrade1 == null)
+        {
+            image1.sprite = null;
+            headerText.text = ":)";
+            descriptionText.text = "No upgrades left in this tree";
+        }
+        else
+        {
+            image1.sprite = upgrade1.upgradeSprite;
+            headerText.text = upgrade1.upgradeName;
+            descriptionText.text = upgrade1.upgradeDescription;
+        }
+        if (upgrade2 == null)
+            image2.sprite = null;
+        else
+            image2.sprite = upgrade2.upgradeSprite;
 
         //Info Menu
         PopulateInfo();
@@ -124,35 +139,56 @@ public class TowerGUIManager : MonoBehaviour
 
     internal void TowerClicked(TowerController towerController, UpgradeTree upgradeTree, TowerStats towerStats, Vector3 position)
     {
-        towerSelected = true;
-        towerGUIHolder.transform.position = Camera.main.WorldToScreenPoint(position + towerGUIOffset);
-        towerGUIHolder.SetActive(true);
+        if (!gameManager.playerBusy)
+        {
+            gameManager.IncrementPlayerBusy();
+            towerSelected = true;
+            towerGUIHolder.transform.position = Camera.main.WorldToScreenPoint(position + towerGUIOffset);
+            towerGUIHolder.SetActive(true);
 
-        PopulateMenus(upgradeTree, towerStats);
+            PopulateMenus(upgradeTree, towerStats);
 
-        currentTowerController = towerController;
-        currentTowerController.selected = true;
+            currentTowerController = towerController;
+            currentTowerController.selected = true;
+        }
     }
 
     public void Upgrade1Button_OnMouseEnter()
     {
         TowerUpgrade upgrade = currentUpgradeTree.GetNextInLine(1);
         Text headerText = upgradesMenu.transform.Find("Header").GetComponent<Text>();
-        headerText.text = upgrade.upgradeName;
         Text descriptionText = upgradesMenu.transform.Find("Description").GetComponent<Text>();
-        descriptionText.text = upgrade.upgradeDescription;
+        if (upgrade == null)
+        {
+            headerText.text = ":)";
+            descriptionText.text = "No upgrades left in this tree";
+        }
+        else
+        {
+            headerText.text = upgrade.upgradeName;
+            descriptionText.text = upgrade.upgradeDescription;
+        }
     }
     public void Upgrade2Button_OnMouseEnter()
     {
         TowerUpgrade upgrade = currentUpgradeTree.GetNextInLine(2);
         Text headerText = upgradesMenu.transform.Find("Header").GetComponent<Text>();
-        headerText.text = upgrade.upgradeName;
         Text descriptionText = upgradesMenu.transform.Find("Description").GetComponent<Text>();
-        descriptionText.text = upgrade.upgradeDescription;
+        if (upgrade == null)
+        {
+            headerText.text = ":)";
+            descriptionText.text = "No upgrades left in this tree";
+        }
+        else
+        {
+            headerText.text = upgrade.upgradeName;
+            descriptionText.text = upgrade.upgradeDescription;
+        }
     }
     public void Upgrade1Button_OnClick()
     {
         currentTowerController.Upgrade(1);
+        PopulateInfo();
         PopulateMenus(currentUpgradeTree, currentTowerStats);
     }
     public void Upgrade2Button_OnClick()
@@ -219,7 +255,7 @@ public class TowerGUIManager : MonoBehaviour
             closestIsPressed = false;
             closestButton.GetComponent<Image>().color = Color.white;
         }
-        if(lastIsPressed)
+        if (lastIsPressed)
         {
             lastIsPressed = false;
             lastButton.GetComponent<Image>().color = Color.white;

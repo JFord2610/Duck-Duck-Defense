@@ -29,7 +29,7 @@ public abstract class BaseAction : MonoBehaviour
 
     IEnumerator Cooldown()
     {
-        yield return new WaitForSeconds(1 / towerController._attackSpeed);
+        yield return new WaitForSeconds(1 / towerController.AttackSpeed);
         onCooldown = false;
     }
 }

@@ -32,14 +32,15 @@ public class BaseGoose : MonoBehaviour
     {
         health -= damage;
         if (health <= 0)
-            Die();
+            Die(false);
     }
 
-    public void Die()
+    public void Die(bool endOfPath)
     {
-        gameManager.player.AddMoney(goldWorth);
+        if (!endOfPath)
+            gameManager.player.AddMoney(goldWorth);
         gameManager.geese.Remove(gameObject);
-        if(!moving)
+        if (!moving)
             gameManager.player.Damage(lifeWorth);
         Destroy(gameObject);
     }

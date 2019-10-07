@@ -44,7 +44,7 @@ public class PathFinder : MonoBehaviour
                 if(currentPathIndex > path.WayPoints.Length - 1)
                 {
                     goose.moving = false;
-                    goose.Die();
+                    goose.Die(true);
                     return;
                 }
 

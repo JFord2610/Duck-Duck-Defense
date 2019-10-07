@@ -24,6 +24,43 @@ public class TowerController : MonoBehaviour
     public float _attackSpeed = 0;
     [Tooltip("Default targeting property of tower")]
     public ETargetingType _targetingType = ETargetingType.Closest;
+
+    public float Damage
+    {
+        get { return _damage; }
+        set
+        {
+            _damage = value;
+            towerInfo.towerStats.damage = value;
+        }
+    }
+    public float AttackRange
+    {
+        get { return _attackRange; }
+        set
+        {
+            _attackRange = value;
+            towerInfo.towerStats.attackRange = value;
+        }
+    }
+    public float AttackSpeed
+    {
+        get { return _attackSpeed; }
+        set
+        {
+            _attackSpeed = value;
+            towerInfo.towerStats.attackSpeed = value;
+        }
+    }
+    public ETargetingType TargetingType
+    {
+        get { return _targetingType; }
+        set
+        {
+            _targetingType = value;
+            towerInfo.towerStats.targetingType = value;
+        }
+    }
     #endregion
 
     #region Tower Visuals
@@ -66,8 +103,8 @@ public class TowerController : MonoBehaviour
         spriteTransform = transform.GetChild(0).transform;
         anim = spriteTransform.gameObject.GetComponent<Animator>();
         towerType = gameObject.GetComponent<BaseAction>();
-        attackRadius.size = new Vector2(_attackRange * 2, _attackRange * 2);
-        anim.speed = 1 / _attackSpeed;
+        attackRadius.size = new Vector2(AttackRange * 2, AttackRange * 2);
+        anim.speed = 1 / AttackSpeed;
         upgradeTree = towerInfo.upgradeTree.CreateCopy();
     }
 
@@ -81,9 +118,9 @@ public class TowerController : MonoBehaviour
     {
         if((mod.modType & EModifierType.Stats) == EModifierType.Stats)
         {
-            _damage += mod.damage;
-            _attackRange += mod.attackRange;
-            _attackSpeed += mod.attackSpeed;
+            Damage += mod.damage;
+            AttackRange += mod.attackRange;
+            AttackSpeed += mod.attackSpeed;
         }
         if((mod.modType & EModifierType.Action) == EModifierType.Action)
         {
@@ -100,9 +137,9 @@ public class TowerController : MonoBehaviour
     {
         if ((mod.modType & EModifierType.Stats) == EModifierType.Stats)
         {
-            _damage -= mod.damage;
-            _attackRange -= mod.attackRange;
-            _attackSpeed -= mod.attackSpeed;
+            Damage -= mod.damage;
+            AttackRange -= mod.attackRange;
+            AttackSpeed -= mod.attackSpeed;
         }
         if ((mod.modType & EModifierType.Action) == EModifierType.Action)
         {
@@ -123,7 +160,7 @@ public class TowerController : MonoBehaviour
         AddModifier(upgrade.modifier);
         upgrade.hasUpgrade = true;
 
-        attackRadius.size = new Vector2(_attackRange * 2, _attackRange * 2);
+        attackRadius.size = new Vector2(AttackRange * 2, AttackRange * 2);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -178,7 +215,7 @@ public class TowerController : MonoBehaviour
         foreach (GameObject g in gameManager.geese)
         {
             float dst = (g.transform.position - transform.position).magnitude;
-            if (dst <= _attackRange)
+            if (dst <= AttackRange)
                 geese.Add(g.GetComponent<BaseGoose>());
         }
 
@@ -213,7 +250,7 @@ public class TowerController : MonoBehaviour
         foreach (BaseGoose g in geese)
         {
             Vector3 goosePos = g.transform.position;
-            if ((pos - goosePos).magnitude < _attackRange)
+            if ((pos - goosePos).magnitude < AttackRange)
             {
                 goose = g;
                 break;
@@ -230,7 +267,7 @@ public class TowerController : MonoBehaviour
         foreach (BaseGoose g in geese)
         {
             Vector3 goosePos = g.transform.position;
-            if ((pos - goosePos).magnitude < _attackRange)
+            if ((pos - goosePos).magnitude < AttackRange)
             {
                 goose = g;
                 break;
@@ -250,10 +287,10 @@ public class TowerController : MonoBehaviour
     {
         if (towerStats != null)
         {
-            towerStats.damage = _damage;
-            towerStats.attackSpeed = _attackSpeed;
-            towerStats.attackRange = _attackRange;
-            towerStats.targetingType = _targetingType;
+            towerStats.damage = Damage;
+            towerStats.attackSpeed = AttackSpeed;
+            towerStats.attackRange = AttackRange;
+            towerStats.targetingType = TargetingType;
         }
         if (towerVisuals != null)
         {

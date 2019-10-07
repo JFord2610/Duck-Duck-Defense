@@ -14,7 +14,7 @@ public class U1Splitshot : BaseAction
     public override void Action()
     {
         BaseGoose targetGoose = null;
-        switch (towerController._targetingType)
+        switch (towerController.TargetingType)
         {
             case ETargetingType.Closest:
                 targetGoose = towerController.GetClosestGoose();
@@ -39,7 +39,7 @@ public class U1Splitshot : BaseAction
     private void AttackGoose(BaseGoose goose)
     {
         anim.SetTrigger("Attack");
-        float damage = towerController._damage;
+        float damage = towerController.Damage;
         Vector3 moveVector1 = goose.transform.position - transform.position;
         Vector3 moveVector2 = goose.transform.position - transform.position;
         Vector3 moveVector3 = goose.transform.position - transform.position;

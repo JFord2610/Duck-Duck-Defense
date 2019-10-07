@@ -14,7 +14,7 @@ public class Gerald : BaseAction
     public override void Action()
     {
         BaseGoose targetGoose = null;
-        switch (towerController._targetingType)
+        switch (towerController.TargetingType)
         {
             case ETargetingType.Closest:
                 targetGoose = towerController.GetClosestGoose();
@@ -39,6 +39,6 @@ public class Gerald : BaseAction
     private void AttackGoose(BaseGoose goose)
     {
         anim.SetTrigger("Attack");
-        GameObject proj = gameManager.projectileFactory.CreateProjectile("GeraldProjectile", towerController._damage, projectileSpeed, (goose.transform.position - transform.position).normalized, transform.position, 0);
+        GameObject proj = gameManager.projectileFactory.CreateProjectile("GeraldProjectile", towerController.Damage, projectileSpeed, (goose.transform.position - transform.position).normalized, transform.position, 0);
     }
 }
