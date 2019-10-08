@@ -4,7 +4,6 @@ public class U1Splitshot : BaseAction
 {
     Animator anim = null;
 
-    float projectileSpeed = 9;
     float projectileAngleOffset = 30.0f;
 
     protected override void Init()

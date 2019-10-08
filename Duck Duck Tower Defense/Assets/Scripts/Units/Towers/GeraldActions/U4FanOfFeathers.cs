@@ -5,8 +5,7 @@ using UnityEngine;
 public class U4FanOfFeathers : BaseAction
 {
     Animator anim = null;
-
-    float projectileSpeed = 9;
+    
     float projectileAngleOffset = 10.0f;
 
     protected override void Init()

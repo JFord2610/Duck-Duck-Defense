@@ -13,7 +13,6 @@ public class TowerGUIManager : MonoBehaviour
     TowerController currentTowerController = null;
     UpgradeTree currentUpgradeTree = null;
     TowerStats currentTowerStats = null;
-    string currentTowerName = null;
     bool towerSelected = false;
 
     public Canvas gameOverlayCanvas = null;

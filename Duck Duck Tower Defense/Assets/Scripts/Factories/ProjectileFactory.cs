@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ProjectileFactory : MonoBehaviour
 {
-    [SerializeField] GameObject[] prefabs;
+    [SerializeField] GameObject[] prefabs = new GameObject[1];
 
     public GameObject CreateProjectile(string type, float damage, Vector3 moveVector, Vector3 startPosition, ProjectileInfo projInfo)
     {

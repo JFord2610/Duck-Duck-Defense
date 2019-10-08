@@ -4,8 +4,6 @@ public class GeraldBase : BaseAction
 {
     Animator anim = null;
 
-    float projectileSpeed = 9;
-
     protected override void Init()
     {
         anim = gameObject.GetComponentInChildren<Animator>();
