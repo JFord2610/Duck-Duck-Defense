@@ -16,6 +16,6 @@ MonoBehaviour:
   upgradeDescription: "[Gerald\u2019s feathers pierce through Geese! Stopper 1 ->
     Stopper 3]"
   upgradeSprite: {fileID: 0}
-  modifier: {fileID: 0}
+  modifier: {fileID: 11400000, guid: 1a84726a2b709df4f8fb71663dc446e9, type: 2}
   cost: 600
   hasUpgrade: 0

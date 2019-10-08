@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bc8974c6820c6541992e470f66293a8, type: 3}
-  m_Name: Test Goose
+  m_Script: {fileID: 11500000, guid: b32392e19e1a66c4192bbcd8a2501752, type: 3}
+  m_Name: +3 Bounce
   m_EditorClassIdentifier: 
-  health: 70
-  speed: 5
-  lifeWorth: 5
-  goldWorth: 5
-  color: {r: 1, g: 0.4575472, b: 0.4575472, a: 1}
+  speed: 0
+  bounces: 3
+  pierce: 0
+  timeBeforeDeath: 0

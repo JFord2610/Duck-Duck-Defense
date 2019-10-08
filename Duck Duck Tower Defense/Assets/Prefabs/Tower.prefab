@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 605527946037550412}
   - component: {fileID: 7312532149408034385}
   - component: {fileID: 6388012715966534829}
-  - component: {fileID: -5893340283348409169}
+  - component: {fileID: -5236843602616927670}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -287,13 +287,14 @@ MonoBehaviour:
   _attackRange: 4
   _attackSpeed: 2
   _targetingType: 0
+  projInfo: {fileID: 11400000, guid: d9621ffca6e63574097857e2052a6222, type: 2}
   towerVisuals: {fileID: 11400000, guid: 32a44ab14152c294aa3abae8e4476ebe, type: 2}
   scaleFactor: 0.15
   _sprite: {fileID: 21300000, guid: 09ec0f75e84c0154b9db9fac768d1525, type: 3}
   _animController: {fileID: 9100000, guid: f7d7828349c434e4eb8d9ed501054869, type: 2}
   upgradeTree: {fileID: 11400000, guid: e32031f22f014364c8c4306b9060b3b2, type: 2}
   modifiers: []
---- !u!114 &-5893340283348409169
+--- !u!114 &-5236843602616927670
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -302,7 +303,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5718340254931879210}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3ff5a62c3072204286c2dff12208187, type: 3}
+  m_Script: {fileID: 11500000, guid: e22887d8c228e46429dea9520e052db5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6059369363277481363

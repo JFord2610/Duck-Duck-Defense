@@ -19,11 +19,15 @@ public abstract class BaseAction : MonoBehaviour
 
     private void Start()
     {
-        tStats = towerController.towerStats;
+        tStats = towerController.towerInfo.towerStats;
         Init();
     }
 
     protected abstract void Init();
+    protected void DestroyAction(string action)
+    {
+        Destroy(gameObject.GetComponent(System.Type.GetType(action)));
+    }
 
     public abstract void Action();
 

@@ -16,6 +16,6 @@ MonoBehaviour:
   upgradeDescription: "[Gerald\u2019s feathers bounce to nearby targets! 1 targets
     -> 3 targets]"
   upgradeSprite: {fileID: 0}
-  modifier: {fileID: 0}
+  modifier: {fileID: 11400000, guid: 52bef9798bc43a5469a9ee6a7e030b24, type: 2}
   cost: 400
   hasUpgrade: 0

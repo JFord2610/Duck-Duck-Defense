@@ -17,13 +17,13 @@ public class TowerController : MonoBehaviour
     [Header("Tower Stats")]
     public TowerStats towerStats = null;
     [Tooltip("Damage by the tower to enemies")]
-    public float _damage = 0;
+    [SerializeField] private float _damage = 0;
     [Tooltip("Effective range of tower")]
-    public float _attackRange = 0;
+    [SerializeField] private float _attackRange = 0;
     [Tooltip("Speed of the towers action call measured in attacks per second")]
-    public float _attackSpeed = 0;
+    [SerializeField] private float _attackSpeed = 0;
     [Tooltip("Default targeting property of tower")]
-    public ETargetingType _targetingType = ETargetingType.Closest;
+    [SerializeField] private ETargetingType _targetingType = ETargetingType.Closest;
 
     public float Damage
     {
@@ -63,6 +63,10 @@ public class TowerController : MonoBehaviour
     }
     #endregion
 
+    #region ProjectileInfo
+    public ProjectileInfo projInfo = null;
+    #endregion
+
     #region Tower Visuals
     [Space]
     [Header("Visuals")]
@@ -74,7 +78,7 @@ public class TowerController : MonoBehaviour
     [Tooltip("Animator of the sprite")]
     [SerializeField] AnimatorController _animController = null;
     #endregion
-    
+
     public UpgradeTree upgradeTree;
     public List<Modifier> modifiers;
 
@@ -92,7 +96,7 @@ public class TowerController : MonoBehaviour
     TowerGUIManager towerGUIManager = null;
     SpriteRenderer attackRadius = null;
     Transform spriteTransform = null;
-    BaseAction towerType = null;
+    internal BaseAction action = null;
     Animator anim = null;
 
     private void Awake()
@@ -102,27 +106,35 @@ public class TowerController : MonoBehaviour
         attackRadius = transform.GetChild(2).gameObject.GetComponent<SpriteRenderer>();
         spriteTransform = transform.GetChild(0).transform;
         anim = spriteTransform.gameObject.GetComponent<Animator>();
-        towerType = gameObject.GetComponent<BaseAction>();
+        action = gameObject.GetComponent<BaseAction>();
         attackRadius.size = new Vector2(AttackRange * 2, AttackRange * 2);
         anim.speed = 1 / AttackSpeed;
         upgradeTree = towerInfo.upgradeTree.CreateCopy();
+        projInfo = towerInfo.projectileInfo.CreateCopy();
     }
 
     private void FixedUpdate()
     {
         if (alive)
-            towerType.Action();
+            action.Action();
     }
 
     internal void AddModifier(Modifier mod)
     {
-        if((mod.modType & EModifierType.Stats) == EModifierType.Stats)
+        if ((mod.modType & EModifierType.Stats) == EModifierType.Stats)
         {
             Damage += mod.damage;
             AttackRange += mod.attackRange;
             AttackSpeed += mod.attackSpeed;
+            if(mod.projectileInfo)
+            {
+                projInfo.speed += mod.projectileInfo.speed;
+                projInfo.bounces += mod.projectileInfo.bounces;
+                projInfo.pierce += mod.projectileInfo.pierce;
+                projInfo.speed += mod.projectileInfo.timeBeforeDeath;
+            }
         }
-        if((mod.modType & EModifierType.Action) == EModifierType.Action)
+        if ((mod.modType & EModifierType.Action) == EModifierType.Action)
         {
             gameObject.AddComponent(Type.GetType(mod.action));
         }

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: Gerald
   towerStats: {fileID: 11400000, guid: 58588fecabcf5084f88ae8390d37fabc, type: 2}
+  projectileInfo: {fileID: 11400000, guid: d9621ffca6e63574097857e2052a6222, type: 2}
   towerVisuals: {fileID: 11400000, guid: 32a44ab14152c294aa3abae8e4476ebe, type: 2}
   upgradeTree: {fileID: 11400000, guid: e32031f22f014364c8c4306b9060b3b2, type: 2}
   towerCost: 100

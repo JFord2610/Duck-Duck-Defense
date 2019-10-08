@@ -16,6 +16,6 @@ MonoBehaviour:
   upgradeDescription: "[Gerald\u2019s feathers split as he throws them out! 1 Projectile
     -> 3 Projectiles]"
   upgradeSprite: {fileID: 0}
-  modifier: {fileID: 0}
+  modifier: {fileID: 11400000, guid: 02691eddcee780642830230051c340f1, type: 2}
   cost: 200
   hasUpgrade: 0

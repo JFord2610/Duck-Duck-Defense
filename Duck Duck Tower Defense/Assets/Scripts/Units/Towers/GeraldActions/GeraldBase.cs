@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-public class Gerald : BaseAction
+public class GeraldBase : BaseAction
 {
     Animator anim = null;
 
-    float projectileSpeed = 3;
+    float projectileSpeed = 9;
 
     protected override void Init()
     {
@@ -39,6 +39,6 @@ public class Gerald : BaseAction
     private void AttackGoose(BaseGoose goose)
     {
         anim.SetTrigger("Attack");
-        GameObject proj = gameManager.projectileFactory.CreateProjectile("GeraldProjectile", towerController.Damage, projectileSpeed, (goose.transform.position - transform.position).normalized, transform.position, 0);
+        GameObject proj = gameManager.projectileFactory.CreateProjectile("GeraldProjectile", towerController.Damage, (goose.transform.position - transform.position).normalized, transform.position, towerController.projInfo);
     }
 }

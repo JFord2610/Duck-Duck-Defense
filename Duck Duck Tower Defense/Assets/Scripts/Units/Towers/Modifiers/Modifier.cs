@@ -18,6 +18,9 @@ public class Modifier : ScriptableObject
     public float attackRange;
     public float attackSpeed;
 
+    //projectile
+    public ProjectileInfo projectileInfo;
+
     //action
     public string action;
 

@@ -136,6 +136,37 @@ public class TowerGUIManager : MonoBehaviour
         Text attackSpeedText = infoMenu.transform.Find("AttackSpeed").Find("AttackSpeedVal").GetComponent<Text>();
         attackSpeedText.text = currentTowerStats.attackSpeed.ToString();
     }
+    
+    private void PopulateUpgrade1(TowerUpgrade upgrade)
+    {
+        Text headerText = upgradesMenu.transform.Find("Header").GetComponent<Text>();
+        Text descriptionText = upgradesMenu.transform.Find("Description").GetComponent<Text>();
+        if (upgrade == null)
+        {
+            headerText.text = ":)";
+            descriptionText.text = "No upgrades left in this tree";
+        }
+        else
+        {
+            headerText.text = upgrade.upgradeName;
+            descriptionText.text = upgrade.upgradeDescription;
+        }
+    }
+    private void PopulateUpgrade2(TowerUpgrade upgrade)
+    {
+        Text headerText = upgradesMenu.transform.Find("Header").GetComponent<Text>();
+        Text descriptionText = upgradesMenu.transform.Find("Description").GetComponent<Text>();
+        if (upgrade == null)
+        {
+            headerText.text = ":)";
+            descriptionText.text = "No upgrades left in this tree";
+        }
+        else
+        {
+            headerText.text = upgrade.upgradeName;
+            descriptionText.text = upgrade.upgradeDescription;
+        }
+    }
 
     internal void TowerClicked(TowerController towerController, UpgradeTree upgradeTree, TowerStats towerStats, Vector3 position)
     {
@@ -155,47 +186,23 @@ public class TowerGUIManager : MonoBehaviour
 
     public void Upgrade1Button_OnMouseEnter()
     {
-        TowerUpgrade upgrade = currentUpgradeTree.GetNextInLine(1);
-        Text headerText = upgradesMenu.transform.Find("Header").GetComponent<Text>();
-        Text descriptionText = upgradesMenu.transform.Find("Description").GetComponent<Text>();
-        if (upgrade == null)
-        {
-            headerText.text = ":)";
-            descriptionText.text = "No upgrades left in this tree";
-        }
-        else
-        {
-            headerText.text = upgrade.upgradeName;
-            descriptionText.text = upgrade.upgradeDescription;
-        }
+        PopulateUpgrade1(currentUpgradeTree.GetNextInLine(1));
     }
     public void Upgrade2Button_OnMouseEnter()
     {
-        TowerUpgrade upgrade = currentUpgradeTree.GetNextInLine(2);
-        Text headerText = upgradesMenu.transform.Find("Header").GetComponent<Text>();
-        Text descriptionText = upgradesMenu.transform.Find("Description").GetComponent<Text>();
-        if (upgrade == null)
-        {
-            headerText.text = ":)";
-            descriptionText.text = "No upgrades left in this tree";
-        }
-        else
-        {
-            headerText.text = upgrade.upgradeName;
-            descriptionText.text = upgrade.upgradeDescription;
-        }
+        PopulateUpgrade2(currentUpgradeTree.GetNextInLine(2));
     }
     public void Upgrade1Button_OnClick()
     {
         currentTowerController.Upgrade(1);
         PopulateInfo();
-        PopulateMenus(currentUpgradeTree, currentTowerStats);
+        PopulateUpgrade1(currentUpgradeTree.GetNextInLine(1));
     }
     public void Upgrade2Button_OnClick()
     {
         currentTowerController.Upgrade(2);
         PopulateInfo();
-        PopulateMenus(currentUpgradeTree, currentTowerStats);
+        PopulateUpgrade2(currentUpgradeTree.GetNextInLine(2));
     }
 
     public void UpgradesButton_OnClick()

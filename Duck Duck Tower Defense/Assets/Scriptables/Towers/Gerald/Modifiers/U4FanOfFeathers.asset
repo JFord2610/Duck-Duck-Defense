@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90b510de2ae72534ba40e9996bd2c6b1, type: 3}
+  m_Name: U4FanOfFeathers
+  m_EditorClassIdentifier: 
+  modType: 8
+  modName: Fan Of Feathers
+  modDescription: Gerald fires a wide fan of feathers! 3 Projectiles -> 8 Projectiles
+  modSprite: {fileID: 0}
+  damage: 0
+  attackRange: 0
+  attackSpeed: 0
+  projectileInfo: {fileID: 0}
+  action: U4FanOfFeathers
+  towerSprite: {fileID: 0}
+  animController: {fileID: 0}

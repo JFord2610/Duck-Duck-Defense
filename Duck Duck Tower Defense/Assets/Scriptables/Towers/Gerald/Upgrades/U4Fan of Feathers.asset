@@ -15,6 +15,6 @@ MonoBehaviour:
   upgradeName: Fan of Feathers!
   upgradeDescription: '[Gerald fires a wide fan of feathers! 3 Projectiles -> 8 Projectiles]'
   upgradeSprite: {fileID: 0}
-  modifier: {fileID: 0}
+  modifier: {fileID: 11400000, guid: bba641fef5c3e144f977905ad594093a, type: 2}
   cost: 1200
   hasUpgrade: 0

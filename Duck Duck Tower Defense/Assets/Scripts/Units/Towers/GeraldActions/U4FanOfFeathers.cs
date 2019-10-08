@@ -1,16 +1,18 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class U1Splitshot : BaseAction
+public class U4FanOfFeathers : BaseAction
 {
     Animator anim = null;
 
     float projectileSpeed = 9;
-    float projectileAngleOffset = 30.0f;
+    float projectileAngleOffset = 10.0f;
 
     protected override void Init()
     {
         anim = gameObject.GetComponentInChildren<Animator>();
-        DestroyAction("GeraldBase");
+        DestroyAction("U1Splitshot");
         towerController.action = this;
     }
 
@@ -44,13 +46,19 @@ public class U1Splitshot : BaseAction
         anim.SetTrigger("Attack");
         float damage = towerController.Damage;
         Vector3 moveVector1 = goose.transform.position - transform.position;
-        Vector3 moveVector2 = goose.transform.position - transform.position;
-        Vector3 moveVector3 = goose.transform.position - transform.position;
-        moveVector2 = Quaternion.Euler(0, 0, projectileAngleOffset) * moveVector2;
-        moveVector3 = Quaternion.Euler(0, 0, -projectileAngleOffset) * moveVector3;
 
-        GameObject proj1 = gameManager.projectileFactory.CreateProjectile("GeraldProjectile", damage, moveVector1.normalized, transform.position, towerController.projInfo);
-        GameObject proj2 = gameManager.projectileFactory.CreateProjectile("GeraldProjectile", damage, moveVector2.normalized, transform.position, towerController.projInfo);
-        GameObject proj3 = gameManager.projectileFactory.CreateProjectile("GeraldProjectile", damage, moveVector3.normalized, transform.position, towerController.projInfo);
+        for (float i = -3.5f; i < 3.5f; i++)
+        {
+            Vector3 moveVector2 = Quaternion.Euler(0, 0, projectileAngleOffset * i) * moveVector1;
+
+            GameObject proj1 = gameManager.projectileFactory.CreateProjectile(
+            "GeraldProjectile",
+            damage,
+            moveVector2.normalized,
+            transform.position,
+            towerController.projInfo);
+        }
+
+        
     }
 }
