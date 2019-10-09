@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class TowerGUIManager : MonoBehaviour
 {
     Vector3 towerGUIOffset = new Vector3(0.7f, 0.55f, 0.0f);
+    Color transparencyChangeOnClick = new Color(0, 0, 0, 0.4f);
 
     GameManagerScript gameManager = null;
     TowerController currentTowerController = null;
@@ -20,7 +21,10 @@ public class TowerGUIManager : MonoBehaviour
     public EventSystem eventSystem = null;
     GameObject background = null;
     GameObject upgradesMenu = null;
+    GameObject upgradeButton = null;
     GameObject infoMenu = null;
+    GameObject infoButton = null;
+    GameObject sellButton = null;
 
     Button firstButton = null;
     Button closestButton = null;
@@ -40,6 +44,9 @@ public class TowerGUIManager : MonoBehaviour
         firstButton = targetingTypeObj.Find("First").GetComponent<Button>();
         closestButton = targetingTypeObj.Find("Closest").GetComponent<Button>();
         lastButton = targetingTypeObj.Find("Last").GetComponent<Button>();
+        infoButton = towerGUIHolder.transform.Find("InfoButton").gameObject;
+        upgradeButton = towerGUIHolder.transform.Find("UpgradeButton").gameObject;
+        sellButton = towerGUIHolder.transform.Find("SellButton").gameObject;
     }
 
     private void Update()
@@ -208,16 +215,22 @@ public class TowerGUIManager : MonoBehaviour
     {
         if (upgradesMenu.activeInHierarchy)
         {
+            sellButton.GetComponent<Image>().color += transparencyChangeOnClick;
+            infoButton.GetComponent<Image>().color += transparencyChangeOnClick;
             upgradesMenu.SetActive(false);
             background.SetActive(false);
         }
         else if (infoMenu.activeInHierarchy)
         {
+            upgradeButton.GetComponent<Image>().color += transparencyChangeOnClick;
+            infoButton.GetComponent<Image>().color -= transparencyChangeOnClick;
             infoMenu.SetActive(false);
             upgradesMenu.SetActive(true);
         }
         else
         {
+            infoButton.GetComponent<Image>().color -= transparencyChangeOnClick;
+            sellButton.GetComponent<Image>().color -= transparencyChangeOnClick;
             upgradesMenu.SetActive(true);
             if (!background.activeInHierarchy)
                 background.SetActive(true);
@@ -227,16 +240,22 @@ public class TowerGUIManager : MonoBehaviour
     {
         if (infoMenu.activeInHierarchy)
         {
+            sellButton.GetComponent<Image>().color += transparencyChangeOnClick;
+            upgradeButton.GetComponent<Image>().color += transparencyChangeOnClick;
             infoMenu.SetActive(false);
             background.SetActive(false);
         }
         else if (upgradesMenu.activeInHierarchy)
         {
+            infoButton.GetComponent<Image>().color += transparencyChangeOnClick;
+            upgradeButton.GetComponent<Image>().color -= transparencyChangeOnClick;
             upgradesMenu.SetActive(false);
             infoMenu.SetActive(true);
         }
         else
         {
+            upgradeButton.GetComponent<Image>().color -= transparencyChangeOnClick;
+            sellButton.GetComponent<Image>().color -= transparencyChangeOnClick;
             infoMenu.SetActive(true);
             if (!background.activeInHierarchy)
                 background.SetActive(true);

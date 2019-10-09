@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b72f1ed7e3bf6be48b4ef604afe19b14, type: 3}
-  m_Name: CloselyPacked Round
+  m_Name: M1R1
   m_EditorClassIdentifier: 
   waves:
-  - {fileID: 11400000, guid: e593c906d0fa37740bf1ddb35d41c8a5, type: 2}
+  - {fileID: 11400000, guid: ae06a106f7af5e14ebcd55a5b29312d4, type: 2}
+  - {fileID: 11400000, guid: ae06a106f7af5e14ebcd55a5b29312d4, type: 2}
+  - {fileID: 11400000, guid: 672599f74da18694c9e2c032227a355c, type: 2}
   timeBetweenWaves:
-  - 0.1
+  - 3
+  - 4

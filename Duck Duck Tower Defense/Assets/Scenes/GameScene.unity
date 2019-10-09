@@ -1649,8 +1649,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42cdb4de4285b447b1cd088f5a019cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towersInfo:
-  - {fileID: 11400000, guid: 51112a0c537d17e4cb38b08474c76e0a, type: 2}
   gameOverlayCanvas: {fileID: 1474017747}
   towerGUIHolder: {fileID: 1984290925}
   eventSystem: {fileID: 539710297}
@@ -4373,7 +4371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.5235849, b: 0.5235849, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
