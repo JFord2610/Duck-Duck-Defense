@@ -8,6 +8,7 @@ public class ProjectileController : MonoBehaviour
     private Rigidbody2D rb2d;
 
     public ProjectileInfo projInfo;
+    public TowerController towerController;
 
     public float damage = 0;
     public float speed = 0;
@@ -55,7 +56,7 @@ public class ProjectileController : MonoBehaviour
             if (colliding)
                 return;
             colliding = true;
-            GameObject goose1 = collision.gameObject.transform.parent.gameObject;
+            GameObject goose1 = collision.gameObject;
             GameObject goose2 = null;
             foreach (GameObject g in geeseHit)
                 if (g == goose1)

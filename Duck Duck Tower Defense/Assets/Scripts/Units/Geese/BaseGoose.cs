@@ -12,7 +12,6 @@ public class BaseGoose : MonoBehaviour
     public bool moving;
 
     public GameManagerScript gameManager;
-    private PathFinder pathFinder;
 
     public Vector3 Position { get { return transform.position; } }
 
@@ -20,12 +19,6 @@ public class BaseGoose : MonoBehaviour
     {
         moving = false;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
-        pathFinder = gameObject.GetComponent<PathFinder>();
-    }
-
-    private void Start()
-    {
-        GetComponent<PathFinder>().StartPath();
     }
 
     public void Damage(float damage)
@@ -39,9 +32,15 @@ public class BaseGoose : MonoBehaviour
     {
         if (!endOfPath)
             gameManager.player.AddMoney(goldWorth);
-        gameManager.geese.Remove(gameObject);
-        if (!moving)
+        if (endOfPath)
             gameManager.player.Damage(lifeWorth);
+        gameManager.geese.Remove(gameObject);
         Destroy(gameObject);
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "End")
+            Die(true);
     }
 }

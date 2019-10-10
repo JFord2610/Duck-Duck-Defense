@@ -51,13 +51,12 @@ public class U4FanOfFeathers : BaseAction
             Vector3 moveVector2 = Quaternion.Euler(0, 0, projectileAngleOffset * i) * moveVector1;
 
             GameObject proj1 = gameManager.projectileFactory.CreateProjectile(
+            towerController,
             "GeraldProjectile",
             damage,
             moveVector2.normalized,
             transform.position,
             towerController.projInfo);
         }
-
-        
     }
 }

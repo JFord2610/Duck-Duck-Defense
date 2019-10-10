@@ -48,8 +48,8 @@ public class U1Splitshot : BaseAction
         moveVector2 = Quaternion.Euler(0, 0, projectileAngleOffset) * moveVector2;
         moveVector3 = Quaternion.Euler(0, 0, -projectileAngleOffset) * moveVector3;
 
-        GameObject proj1 = gameManager.projectileFactory.CreateProjectile("GeraldProjectile", damage, moveVector1.normalized, transform.position, towerController.projInfo);
-        GameObject proj2 = gameManager.projectileFactory.CreateProjectile("GeraldProjectile", damage, moveVector2.normalized, transform.position, towerController.projInfo);
-        GameObject proj3 = gameManager.projectileFactory.CreateProjectile("GeraldProjectile", damage, moveVector3.normalized, transform.position, towerController.projInfo);
+        GameObject proj1 = gameManager.projectileFactory.CreateProjectile(towerController, "GeraldProjectile", damage, moveVector1.normalized, transform.position, towerController.projInfo);
+        GameObject proj2 = gameManager.projectileFactory.CreateProjectile(towerController, "GeraldProjectile", damage, moveVector2.normalized, transform.position, towerController.projInfo);
+        GameObject proj3 = gameManager.projectileFactory.CreateProjectile(towerController, "GeraldProjectile", damage, moveVector3.normalized, transform.position, towerController.projInfo);
     }
 }

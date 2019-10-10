@@ -13,6 +13,7 @@ public class UnitFactory : MonoBehaviour
         GameObject g = Instantiate(goose);
         BaseGoose s = goose.GetComponent<BaseGoose>();
         g.GetComponentInChildren<SpriteRenderer>().color = _color;
+        g.GetComponent<UnitController>().speed = _speed;
         s.speed = _speed;
         s.health = _health;
         s.lifeWorth = _lifeWorth;

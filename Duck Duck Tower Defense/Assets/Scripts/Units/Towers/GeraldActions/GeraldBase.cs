@@ -37,6 +37,6 @@ public class GeraldBase : BaseAction
     private void AttackGoose(BaseGoose goose)
     {
         anim.SetTrigger("Attack");
-        GameObject proj = gameManager.projectileFactory.CreateProjectile("GeraldProjectile", towerController.Damage, (goose.transform.position - transform.position).normalized, transform.position, towerController.projInfo);
+        GameObject proj = gameManager.projectileFactory.CreateProjectile(towerController, "GeraldProjectile", towerController.Damage, (goose.transform.position - transform.position).normalized, transform.position, towerController.projInfo);
     }
 }

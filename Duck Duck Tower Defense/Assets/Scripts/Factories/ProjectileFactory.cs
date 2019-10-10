@@ -5,7 +5,7 @@ public class ProjectileFactory : MonoBehaviour
 {
     [SerializeField] GameObject[] prefabs = new GameObject[1];
 
-    public GameObject CreateProjectile(string type, float damage, Vector3 moveVector, Vector3 startPosition, ProjectileInfo projInfo)
+    public GameObject CreateProjectile(TowerController tc, string type, float damage, Vector3 moveVector, Vector3 startPosition, ProjectileInfo projInfo)
     {
         GameObject g = null;
         for (int i = 0; i < prefabs.Length; i++)
