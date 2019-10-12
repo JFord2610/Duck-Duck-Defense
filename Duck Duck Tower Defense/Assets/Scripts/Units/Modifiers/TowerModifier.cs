@@ -2,17 +2,9 @@
 using UnityEditor.Animations;
 using UnityEngine;
 
-[CreateAssetMenu(menuName ="Modifier")]
-public class Modifier : ScriptableObject
+[CreateAssetMenu(menuName ="Modifiers/Tower Modifier")]
+public class TowerModifier : BaseModifier
 {
-    //base
-    [EnumFlags]
-    public EModifierType modType;
-    public string modName;
-    [TextArea]
-    public string modDescription;
-    public Sprite modSprite;
-
     //stats
     public float damage;
     public float attackRange;
