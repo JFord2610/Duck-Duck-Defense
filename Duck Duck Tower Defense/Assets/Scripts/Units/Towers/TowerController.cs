@@ -27,38 +27,38 @@ public class TowerController : MonoBehaviour
 
     public float Damage
     {
-        get { return _damage; }
+        get { return towerInfo.towerStats.damage; }
         set
         {
-            _damage = value;
             towerInfo.towerStats.damage = value;
+            _damage = value;
         }
     }
     public float AttackRange
     {
-        get { return _attackRange; }
+        get { return towerInfo.towerStats.attackRange; }
         set
         {
-            _attackRange = value;
             towerInfo.towerStats.attackRange = value;
+            _attackRange = value;
         }
     }
     public float AttackSpeed
     {
-        get { return _attackSpeed; }
+        get { return towerInfo.towerStats.attackSpeed; }
         set
         {
-            _attackSpeed = value;
             towerInfo.towerStats.attackSpeed = value;
+            _attackSpeed = value;
         }
     }
     public ETargetingType TargetingType
     {
-        get { return _targetingType; }
+        get { return towerInfo.towerStats.targetingType; }
         set
         {
-            _targetingType = value;
             towerInfo.towerStats.targetingType = value;
+            _targetingType = value;
         }
     }
     #endregion
@@ -95,22 +95,27 @@ public class TowerController : MonoBehaviour
     GameManagerScript gameManager = null;
     TowerGUIManager towerGUIManager = null;
     SpriteRenderer attackRadius = null;
-    Transform spriteTransform = null;
-    internal BaseAction action = null;
+    SpriteRenderer spriteRenderer = null;
     Animator anim = null;
+    internal BaseAction action = null;
 
-    private void Awake()
+    private void Start()
     {
+        towerInfo = towerInfo.CreateCopy();
+        upgradeTree = towerInfo.upgradeTree;
+        projInfo = towerInfo.projectileInfo;
+        towerStats = towerInfo.towerStats;
+        projInfo = towerInfo.projectileInfo;
+        spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        attackRadius = transform.GetChild(2).gameObject.GetComponent<SpriteRenderer>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
         towerGUIManager = GameObject.Find("TowerGUIManager").GetComponent<TowerGUIManager>();
-        attackRadius = transform.GetChild(2).gameObject.GetComponent<SpriteRenderer>();
-        spriteTransform = transform.GetChild(0).transform;
-        anim = spriteTransform.gameObject.GetComponent<Animator>();
-        action = gameObject.GetComponent<BaseAction>();
-        attackRadius.size = new Vector2(AttackRange * 2, AttackRange * 2);
+        anim = spriteRenderer.gameObject.GetComponent<Animator>();
+        attackRadius.transform.localScale = new Vector2(AttackRange * 2, AttackRange * 2);
         anim.speed = 1 / AttackSpeed;
-        upgradeTree = towerInfo.upgradeTree.CreateCopy();
-        projInfo = towerInfo.projectileInfo.CreateCopy();
+        action = (BaseAction)gameObject.AddComponent(System.Type.GetType(towerInfo.action));
+        spriteRenderer.sprite = towerInfo.towerVisuals.sprite;
+        anim.runtimeAnimatorController = towerInfo.towerVisuals.animController;
     }
 
     private void FixedUpdate()
@@ -152,6 +157,13 @@ public class TowerController : MonoBehaviour
             Damage -= mod.damage;
             AttackRange -= mod.attackRange;
             AttackSpeed -= mod.attackSpeed;
+            if (mod.projectileInfo)
+            {
+                projInfo.speed -= mod.projectileInfo.speed;
+                projInfo.bounces -= mod.projectileInfo.bounces;
+                projInfo.pierce -= mod.projectileInfo.pierce;
+                projInfo.speed -= mod.projectileInfo.timeBeforeDeath;
+            }
         }
         if ((mod.modType & EModifierType.Action) == EModifierType.Action)
         {
@@ -207,7 +219,7 @@ public class TowerController : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            spriteTransform.localScale += new Vector3(scaleFactor / 5, scaleFactor / 5, 0.0f);
+            spriteRenderer.transform.localScale += new Vector3(scaleFactor / 5, scaleFactor / 5, 0.0f);
             yield return new WaitForSeconds(0.005f);
         }
     }
@@ -215,7 +227,7 @@ public class TowerController : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            spriteTransform.localScale -= new Vector3(scaleFactor / 5, scaleFactor / 5, 0.0f);
+            spriteRenderer.transform.localScale -= new Vector3(scaleFactor / 5, scaleFactor / 5, 0.0f);
             yield return new WaitForSeconds(0.005f);
         }
     }
@@ -290,9 +302,9 @@ public class TowerController : MonoBehaviour
 
     internal void RotateToPoint(Vector3 p)
     {
-        Vector3 dir = p - spriteTransform.position;
+        Vector3 dir = p - spriteRenderer.transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        spriteTransform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+        spriteRenderer.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
     }
 
     private void OnValidate()

@@ -11,18 +11,19 @@ public class TowerInfo : ScriptableObject
     public TowerVisuals towerVisuals = null;
     public UpgradeTree upgradeTree = null;
     public int towerCost = 0;
-    public string towerType = null;
+    public string action = null;
 
     public TowerInfo CreateCopy()
     {
         TowerInfo newInfo = CreateInstance<TowerInfo>();
 
         newInfo.towerName = towerName;
-        newInfo.towerStats = towerStats;
-        newInfo.towerVisuals = towerVisuals;
+        newInfo.towerStats = towerStats.CreateCopy();
+        newInfo.projectileInfo = projectileInfo.CreateCopy();
+        newInfo.towerVisuals = towerVisuals.CreateCopy();
         newInfo.upgradeTree = upgradeTree.CreateCopy();
         newInfo.towerCost = towerCost;
-        newInfo.towerType = towerType;
+        newInfo.action = action;
 
         return newInfo;
     }

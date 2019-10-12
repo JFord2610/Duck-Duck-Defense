@@ -1,12 +1,10 @@
 ﻿using UnityEngine;
 public class UnitFactory : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject goose = null;
-    [SerializeField]
-    private GameObject tower = null;
-    [SerializeField]
-    private GameManagerScript gameManager = null;
+    [SerializeField] private GameObject goose = null;
+    [SerializeField] private GameObject tower = null;
+    [SerializeField] private GameManagerScript gameManager = null;
+    [SerializeField] private TowerInfo geraldInfo = null;
 
     public GameObject SpawnGoose(float _speed, float _health, int _lifeWorth, int _goldWorth, Color _color)
     {
@@ -25,6 +23,8 @@ public class UnitFactory : MonoBehaviour
     public GameObject SpawnTower()
     {
         GameObject t = Instantiate(tower);
+        TowerController tc = t.GetComponent<TowerController>();
+        tc.towerInfo = geraldInfo;
         return t;
     }
 }

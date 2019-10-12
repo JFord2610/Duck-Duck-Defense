@@ -68,7 +68,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 14
-  m_Sprite: {fileID: 21300000, guid: a14ed374531f75945ba2e0b078a6846c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4d2bb9a4cbfe7b94e99fbdd2847d4102, type: 3}
   m_Color: {r: 0.8867924, g: 0.8867924, b: 0.8867924, a: 0.63529414}
   m_FlipX: 0
   m_FlipY: 0
@@ -156,7 +156,7 @@ SpriteRenderer:
   m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &995058843982208626
@@ -169,7 +169,7 @@ Animator:
   m_GameObject: {fileID: 4272956350077461567}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f7d7828349c434e4eb8d9ed501054869, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -188,9 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5725866218632788179}
   - component: {fileID: 605527946037550412}
-  - component: {fileID: 7312532149408034385}
   - component: {fileID: 6388012715966534829}
-  - component: {fileID: -5236843602616927670}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -231,43 +229,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.25
---- !u!60 &7312532149408034385
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5718340254931879210}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.0063846493, y: 0.5072333}
-      - {x: -0.036074817, y: 0.46670088}
-      - {x: -0.039157018, y: 0.35349238}
-      - {x: -0.18583193, y: 0.25464442}
-      - {x: -0.26130432, y: 0.0020429194}
-      - {x: -0.14356315, y: -0.37660933}
-      - {x: 0.009400222, y: -0.504205}
-      - {x: 0.16010338, y: -0.37660933}
-      - {x: 0.27257824, y: -0.0044925213}
-      - {x: 0.21478295, y: 0.24155244}
-      - {x: 0.05605171, y: 0.35656434}
-      - {x: 0.050598323, y: 0.46877578}
 --- !u!114 &6388012715966534829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,35 +238,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 5718340254931879210}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d809f625a4a9d6644a77d30d0ada4994, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b35d9980e1da1647a4ecb5e97df9466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerInfo: {fileID: 11400000, guid: 31dada843424ba3498f05c17138244be, type: 2}
-  towerName: Gerald
-  towerStats: {fileID: 11400000, guid: 58588fecabcf5084f88ae8390d37fabc, type: 2}
-  _damage: 6
-  _attackRange: 4
-  _attackSpeed: 2
-  _targetingType: 0
-  projInfo: {fileID: 11400000, guid: d9621ffca6e63574097857e2052a6222, type: 2}
-  towerVisuals: {fileID: 11400000, guid: 32a44ab14152c294aa3abae8e4476ebe, type: 2}
+  towerInfo: {fileID: 0}
+  towerName: 
+  towerStats: {fileID: 0}
+  _damage: 0
+  _attackRange: 0
+  _attackSpeed: 0
+  _targetingType: 3
+  projInfo: {fileID: 0}
+  towerVisuals: {fileID: 0}
   scaleFactor: 0.15
-  _sprite: {fileID: 21300000, guid: 09ec0f75e84c0154b9db9fac768d1525, type: 3}
-  _animController: {fileID: 9100000, guid: f7d7828349c434e4eb8d9ed501054869, type: 2}
-  upgradeTree: {fileID: 11400000, guid: e32031f22f014364c8c4306b9060b3b2, type: 2}
+  _sprite: {fileID: 0}
+  _animController: {fileID: 0}
+  upgradeTree: {fileID: 0}
   modifiers: []
---- !u!114 &-5236843602616927670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5718340254931879210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e22887d8c228e46429dea9520e052db5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6059369363277481363
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,12 +323,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0ffbb716b3a61354b8c8cf78d58200dd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5405092056ab69e4abe1d32559a968c9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 1
-  m_Size: {x: 1, y: 1}
+  m_DrawMode: 0
+  m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

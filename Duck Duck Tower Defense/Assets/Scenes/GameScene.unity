@@ -658,7 +658,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 182357167}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 380abeed33e2d064889096556c8eb33c, type: 3}
+  m_Script: {fileID: 11500000, guid: 730a439f51dc6a74cabbafeb4cb2b584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &182357169
@@ -1004,7 +1004,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 350749353}
-  - component: {fileID: 350749352}
+  - component: {fileID: 350749354}
   m_Layer: 0
   m_Name: Shop
   m_TagString: Untagged
@@ -1012,23 +1012,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &350749352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 350749351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70e7996a0c42a834191a4f4cc965d138, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 519420031}
-  gameManager: {fileID: 1870122234}
-  unitFactory: {fileID: 1822230348}
-  Obstacles: {fileID: 1766165762}
-  duckBuyPrice: 100
 --- !u!4 &350749353
 Transform:
   m_ObjectHideFlags: 0
@@ -1043,6 +1026,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &350749354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350749351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dc86a4d8c1582b42a86b78a0b6be4b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 519420031}
+  gameManager: {fileID: 1870122234}
+  unitFactory: {fileID: 1822230348}
+  Obstacles: {fileID: 1766165762}
+  duckBuyPrice: 100
 --- !u!1 &378386485
 GameObject:
   m_ObjectHideFlags: 0
@@ -1544,7 +1544,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 489164976}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aeafff0493546e4ea9d5508acb09b79, type: 3}
+  m_Script: {fileID: 11500000, guid: 2677ad1e51831f34c98b40be2cff1bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleMask:
@@ -1555,12 +1555,12 @@ MonoBehaviour:
   gridSizeY: 50
   nodeRadius: 0.1
   spacing: 0
-  wallPenalty: 2.2
+  wallPenalty: 1.8
   blurSize: 2
   start: {fileID: 743805597}
   goal: {fileID: 335536794}
   showGizmos: 0
-  drawVectorLines: 1
+  drawVectorLines: 0
 --- !u!4 &489164978
 Transform:
   m_ObjectHideFlags: 0
@@ -1831,7 +1831,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 594897174}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e42cdb4de4285b447b1cd088f5a019cc, type: 3}
+  m_Script: {fileID: 11500000, guid: d8f79d783e985e848ba8ca57f3c08c91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverlayCanvas: {fileID: 1474017747}
@@ -2007,7 +2007,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 594897175}
+      - m_Target: {fileID: 0}
         m_MethodName: LastButton_OnClick
         m_Mode: 1
         m_Arguments:
@@ -2139,7 +2139,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 594897175}
+      - m_Target: {fileID: 0}
         m_MethodName: ClosestButton_OnClick
         m_Mode: 1
         m_Arguments:
@@ -2319,11 +2319,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 756715957}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 883de587c1f87cb4bbdcb378f45a401e, type: 3}
+  m_Script: {fileID: 11500000, guid: 378c6aa8acc34b54594e07ca9c1de090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 8210028342367376057, guid: 46eb861e9951fc2418329ff680149052, type: 3}
+  - {fileID: 8210028342367376057, guid: 5169f0286fa49a94e9927a9c988c90ac, type: 3}
 --- !u!4 &756715959
 Transform:
   m_ObjectHideFlags: 0
@@ -2502,7 +2502,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 594897175}
+      - m_Target: {fileID: 0}
         m_MethodName: FirstButton_OnClick
         m_Mode: 1
         m_Arguments:
@@ -2583,11 +2583,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitFactory: {fileID: 1822230348}
   Rounds:
-  - {fileID: 11400000, guid: 76bde070d78659747893c81ea16a2b7f, type: 2}
-  - {fileID: 11400000, guid: 76bde070d78659747893c81ea16a2b7f, type: 2}
-  - {fileID: 11400000, guid: 76bde070d78659747893c81ea16a2b7f, type: 2}
-  - {fileID: 11400000, guid: 76bde070d78659747893c81ea16a2b7f, type: 2}
-  - {fileID: 11400000, guid: 76bde070d78659747893c81ea16a2b7f, type: 2}
+  - {fileID: 11400000, guid: 3c0ead7b6330def4a88a05a8ab09d6f4, type: 2}
+  - {fileID: 11400000, guid: 3c0ead7b6330def4a88a05a8ab09d6f4, type: 2}
+  - {fileID: 11400000, guid: 3c0ead7b6330def4a88a05a8ab09d6f4, type: 2}
+  - {fileID: 11400000, guid: 3c0ead7b6330def4a88a05a8ab09d6f4, type: 2}
+  - {fileID: 11400000, guid: 3c0ead7b6330def4a88a05a8ab09d6f4, type: 2}
+  - {fileID: 11400000, guid: 3c0ead7b6330def4a88a05a8ab09d6f4, type: 2}
+  - {fileID: 11400000, guid: 3c0ead7b6330def4a88a05a8ab09d6f4, type: 2}
+  - {fileID: 11400000, guid: 3c0ead7b6330def4a88a05a8ab09d6f4, type: 2}
+  - {fileID: 11400000, guid: 3c0ead7b6330def4a88a05a8ab09d6f4, type: 2}
+  - {fileID: 11400000, guid: 3c0ead7b6330def4a88a05a8ab09d6f4, type: 2}
 --- !u!4 &839918148
 Transform:
   m_ObjectHideFlags: 0
@@ -3752,7 +3757,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 350749352}
+      - m_Target: {fileID: 350749354}
         m_MethodName: DuckButtonPressed
         m_Mode: 1
         m_Arguments:
@@ -7341,12 +7346,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1822230347}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3807dffb857cad645a2c6c446c576139, type: 3}
+  m_Script: {fileID: 11500000, guid: effc1883d6a610b4cae3b11fdf8abc8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   goose: {fileID: 4358339812752623738, guid: bc63474e5b0f7bb4798197c3bfa9acd7, type: 3}
-  tower: {fileID: 5718340254931879210, guid: 979591c294f221147a9199864933b877, type: 3}
+  tower: {fileID: 5718340254931879210, guid: 5a17da3005daf3243acc4917813e88ef, type: 3}
   gameManager: {fileID: 1870122234}
+  geraldInfo: {fileID: 11400000, guid: 93bd159944cc58d45b1986e945f4ffd4, type: 2}
 --- !u!4 &1822230349
 Transform:
   m_ObjectHideFlags: 0
@@ -7559,7 +7565,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towers:
-  - {fileID: 11400000, guid: 31dada843424ba3498f05c17138244be, type: 2}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!4 &1870122235

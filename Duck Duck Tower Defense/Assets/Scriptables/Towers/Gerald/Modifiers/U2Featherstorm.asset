@@ -9,16 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90b510de2ae72534ba40e9996bd2c6b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 33e07f31bd738ed409a05ffed7f00968, type: 3}
   m_Name: U2Featherstorm
   m_EditorClassIdentifier: 
   modType: 2
-  modName: Featherstorm
-  modDescription: Increases damage by 3.
+  modName: U2Featherstorm
+  modDescription: "Gerald\u2019s feathers become sharper and enhanced! +3 damage"
   modSprite: {fileID: 0}
   damage: 3
   attackRange: 0
   attackSpeed: 0
+  projectileInfo: {fileID: 0}
   action: 
   towerSprite: {fileID: 0}
   animController: {fileID: 0}

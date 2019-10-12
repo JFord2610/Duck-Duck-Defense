@@ -9,13 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af1225a68f36b2c4a8c9d699bbc8c7c3, type: 3}
+  m_Script: {fileID: 11500000, guid: 430b3c0b17ca1044ca4bb67cb9d62ad9, type: 3}
   m_Name: U2Bounceshot
   m_EditorClassIdentifier: 
-  upgradeName: Bounceshot!
-  upgradeDescription: "[Gerald\u2019s feathers bounce to nearby targets! 1 targets
-    -> 3 targets]"
+  upgradeName: U2Bounceshot
+  upgradeDescription: "Gerald\u2019s feathers bounce to nearby targets!"
   upgradeSprite: {fileID: 0}
-  modifier: {fileID: 11400000, guid: 52bef9798bc43a5469a9ee6a7e030b24, type: 2}
+  modifier: {fileID: 11400000, guid: a60d8dc4a80297f44a5bc966c62cead6, type: 2}
   cost: 400
   hasUpgrade: 0

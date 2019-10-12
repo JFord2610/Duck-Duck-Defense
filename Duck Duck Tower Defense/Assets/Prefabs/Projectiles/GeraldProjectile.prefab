@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8210028342367376055}
   - component: {fileID: 8210028342367376054}
   - component: {fileID: 8210028342367376052}
-  - component: {fileID: 6473838157473541106}
   - component: {fileID: 8150322882130566898}
+  - component: {fileID: 4679917252470628781}
   m_Layer: 9
   m_Name: GeraldProjectile
   m_TagString: Projectile
@@ -103,20 +103,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6473838157473541106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8210028342367376057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90ac38f43fe666344a03df3d3f3561e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
-  timeBeforeDeath: 10
 --- !u!58 &8150322882130566898
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -133,3 +119,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!114 &4679917252470628781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8210028342367376057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4717677d0a6126d4fa00d3f69ea05d5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projInfo: {fileID: 11400000, guid: 8c34e3f14dc7dfe43b04e1c6ca3ec14e, type: 2}
+  towerController: {fileID: 0}
+  damage: 0
+  speed: 0
+  bounceTotal: 0
+  pierceTotal: 1
+  maxDistance: 10

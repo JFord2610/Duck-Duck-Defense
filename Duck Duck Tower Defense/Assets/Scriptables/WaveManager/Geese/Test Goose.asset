@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bc8974c6820c6541992e470f66293a8, type: 3}
+  m_Script: {fileID: 11500000, guid: e9d0dde8c88e3b448b3dcd11ad5a48d3, type: 3}
   m_Name: Test Goose
   m_EditorClassIdentifier: 
-  health: 70
-  speed: 2
+  health: 50
+  speed: 4
   lifeWorth: 5
-  goldWorth: 5
-  color: {r: 0.027182579, g: 1, b: 0, a: 1}
+  goldWorth: 10
+  color: {r: 0.6839622, g: 1, b: 0.7080221, a: 1}

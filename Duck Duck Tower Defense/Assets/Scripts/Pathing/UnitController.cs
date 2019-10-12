@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class UnitController : MonoBehaviour
 {
-    [SerializeField] PathManagerScript pathManager;
-    [SerializeField] Rigidbody2D rb2d;
-    Transform sprite;
+    [SerializeField] PathManagerScript pathManager = null;
+    [SerializeField] Rigidbody2D rb2d = null;
     public float speed = 5;
 
     private void Start()

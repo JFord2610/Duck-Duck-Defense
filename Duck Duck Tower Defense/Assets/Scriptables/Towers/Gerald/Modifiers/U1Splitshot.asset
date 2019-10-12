@@ -9,17 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90b510de2ae72534ba40e9996bd2c6b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 33e07f31bd738ed409a05ffed7f00968, type: 3}
   m_Name: U1Splitshot
   m_EditorClassIdentifier: 
   modType: 8
-  modName: Splitshot
-  modDescription: "Gerald\u2019s feathers split as he throws them out! 1 Projectile
-    -> 3 Projectiles"
+  modName: U1Splitshot
+  modDescription: "Gerald\u2019s feathers split as he throws them out! 3 projectiles"
   modSprite: {fileID: 0}
   damage: 0
   attackRange: 0
   attackSpeed: 0
+  projectileInfo: {fileID: 0}
   action: U1Splitshot
   towerSprite: {fileID: 0}
   animController: {fileID: 0}

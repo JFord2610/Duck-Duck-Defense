@@ -9,13 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af1225a68f36b2c4a8c9d699bbc8c7c3, type: 3}
+  m_Script: {fileID: 11500000, guid: 430b3c0b17ca1044ca4bb67cb9d62ad9, type: 3}
   m_Name: U1Splitshot
   m_EditorClassIdentifier: 
-  upgradeName: Splitshot!
-  upgradeDescription: "[Gerald\u2019s feathers split as he throws them out! 1 Projectile
-    -> 3 Projectiles]"
+  upgradeName: U1Splitshot
+  upgradeDescription: "Gerald\u2019s feathers split as he throws them out!"
   upgradeSprite: {fileID: 0}
-  modifier: {fileID: 11400000, guid: 02691eddcee780642830230051c340f1, type: 2}
+  modifier: {fileID: 11400000, guid: 5d3f7c11f77bc504099b96b7d71202b5, type: 2}
   cost: 200
   hasUpgrade: 0

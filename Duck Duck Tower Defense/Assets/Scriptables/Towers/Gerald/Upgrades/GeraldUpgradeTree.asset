@@ -9,17 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb34b9a59cee664587659d2e827e32d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f64a4f4eb1ba8549b73ecb0cc281b3c, type: 3}
   m_Name: GeraldUpgradeTree
   m_EditorClassIdentifier: 
   towerName: Gerald
   line1:
-  - {fileID: 11400000, guid: 7d37d922eded7ef47b4148419a303799, type: 2}
-  - {fileID: 11400000, guid: 9357cf943e8ffde4493aa3181708178b, type: 2}
-  - {fileID: 11400000, guid: 4dbb4313a21722a499f79e44a3e88e8d, type: 2}
-  - {fileID: 11400000, guid: c7fd5d01b7abfdd469848f3dd5501e36, type: 2}
+  - {fileID: 11400000, guid: e790d3ed97daa234ab1de89a4bec41a3, type: 2}
+  - {fileID: 11400000, guid: 8ecf9d7e9bd682f40987fbcbe05cf673, type: 2}
+  - {fileID: 11400000, guid: 85ac9d07fa480ae4a8a0288cdacf93e3, type: 2}
+  - {fileID: 11400000, guid: 6cf707f564964ab4aaef25190d4eb956, type: 2}
   line2:
-  - {fileID: 11400000, guid: 5bcb798b7f6d13d489f3747837d74a07, type: 2}
-  - {fileID: 11400000, guid: c7439346eb7aa4a4883e48986ad4ae1a, type: 2}
-  - {fileID: 11400000, guid: d957dbd7e92ad7d498c6801ec3d560f4, type: 2}
-  - {fileID: 11400000, guid: efb5ef595e9077a4793b1d0e3d9e6952, type: 2}
+  - {fileID: 11400000, guid: 77d21b4491f9e7f4ba732090f025dee0, type: 2}
+  - {fileID: 11400000, guid: 9b50f42bdc14c2749b61743749b36a61, type: 2}
+  - {fileID: 11400000, guid: ba0142490e20c204a9e8fb4a078a0835, type: 2}
+  - {fileID: 11400000, guid: 41f6e5aa0bc84644a92b687ed203827c, type: 2}

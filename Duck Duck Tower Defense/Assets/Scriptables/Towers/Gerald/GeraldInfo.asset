@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bcb150e0a6d90647bc53937625eb680, type: 3}
+  m_Script: {fileID: 11500000, guid: 88d1f1dcddde72440b7fa0e4b66ed89f, type: 3}
   m_Name: GeraldInfo
   m_EditorClassIdentifier: 
   towerName: Gerald
-  towerStats: {fileID: 11400000, guid: 58588fecabcf5084f88ae8390d37fabc, type: 2}
-  projectileInfo: {fileID: 11400000, guid: d9621ffca6e63574097857e2052a6222, type: 2}
-  towerVisuals: {fileID: 11400000, guid: 32a44ab14152c294aa3abae8e4476ebe, type: 2}
-  upgradeTree: {fileID: 11400000, guid: e32031f22f014364c8c4306b9060b3b2, type: 2}
+  towerStats: {fileID: 11400000, guid: f7b7a1b9f48963b45bfd06ea31a27c8d, type: 2}
+  projectileInfo: {fileID: 11400000, guid: 8c34e3f14dc7dfe43b04e1c6ca3ec14e, type: 2}
+  towerVisuals: {fileID: 11400000, guid: 1e77b4c597278ba4b9a809c32af508e9, type: 2}
+  upgradeTree: {fileID: 11400000, guid: d316307c552a34943af08f9a234bd9f6, type: 2}
   towerCost: 100
-  towerType: Gerald
+  action: GeraldBase

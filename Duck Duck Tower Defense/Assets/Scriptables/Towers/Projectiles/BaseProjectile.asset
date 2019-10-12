@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b32392e19e1a66c4192bbcd8a2501752, type: 3}
+  m_Script: {fileID: 11500000, guid: d168c30d27a8fc941a212f344edd81e7, type: 3}
   m_Name: BaseProjectile
   m_EditorClassIdentifier: 
   speed: 10
   bounces: 0
   pierce: 1
-  timeBeforeDeath: 3
+  timeBeforeDeath: 2

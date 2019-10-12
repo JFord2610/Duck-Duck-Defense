@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4733698961407605501}
   - component: {fileID: 5458742027704221777}
   - component: {fileID: 5468054559564151219}
-  - component: {fileID: 1110024170}
-  - component: {fileID: 3040887614102393673}
+  - component: {fileID: 4076871623733549475}
+  - component: {fileID: 3661273050580575401}
   m_Layer: 11
   m_Name: Goose
   m_TagString: Enemy
@@ -120,7 +120,7 @@ CapsuleCollider2D:
   m_Offset: {x: -0.015, y: 0}
   m_Size: {x: 0.35, y: 1}
   m_Direction: 0
---- !u!114 &1110024170
+--- !u!114 &4076871623733549475
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,16 +129,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 4358339812752623738}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90079833667fc3c4db63ad129d4d49a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 869503d0bf0c90145a29e529ad220b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 70
-  speed: 2
+  health: 10
+  speed: 10
   lifeWorth: 5
-  goldWorth: 5
+  goldWorth: 10
   moving: 0
   gameManager: {fileID: 0}
---- !u!114 &3040887614102393673
+--- !u!114 &3661273050580575401
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,9 +147,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4358339812752623738}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bdb90b0d442bf24b8d086decd2956d5, type: 3}
+  m_Script: {fileID: 11500000, guid: 379c4666ee9595c458cb34e3391ce6d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pathManager: {fileID: 0}
   rb2d: {fileID: 4733698961407605501}
-  speed: 4
+  speed: 5
