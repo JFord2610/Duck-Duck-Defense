@@ -59,19 +59,22 @@ public class Shop : MonoBehaviour
 
     public void DuckButtonPressed()
     {
-        if (gameManager.player.money > duckBuyPrice)
+        if(!holdingDuck)
         {
-            duckObj = unitFactory.SpawnTower();
-            duckTower = duckObj.GetComponent<TowerController>();
-            duckSprite = duckTower.GetComponentInChildren<SpriteRenderer>();
-            duckHitCircle = duckObj.transform.GetChild(1).GetComponent<SpriteRenderer>();
-            holdingDuck = true;
-            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            duckObj.transform.position = new Vector3(pos.x, pos.y, 0.0f);
-        }
-        else
-        {
-            //To Do: maybe play notification that player cant afford item
+            if (gameManager.player.money > duckBuyPrice)
+            {
+                duckObj = unitFactory.SpawnTower();
+                duckTower = duckObj.GetComponent<TowerController>();
+                duckSprite = duckTower.GetComponentInChildren<SpriteRenderer>();
+                duckHitCircle = duckObj.transform.GetChild(1).GetComponent<SpriteRenderer>();
+                holdingDuck = true;
+                Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                duckObj.transform.position = new Vector3(pos.x, pos.y, 0.0f);
+            }
+            else
+            {
+                //To Do: maybe play notification that player cant afford item
+            }
         }
     }
 }
