@@ -115,7 +115,7 @@ public class TowerController : MonoBehaviour
         anim.speed = 1 / AttackSpeed;
         action = (BaseAction)gameObject.AddComponent(System.Type.GetType(towerInfo.action));
         spriteRenderer.sprite = towerInfo.towerVisuals.sprite;
-        anim.runtimeAnimatorController = towerInfo.towerVisuals.animController;
+        anim.runtimeAnimatorController = (RuntimeAnimatorController)towerInfo.towerVisuals.animController;
     }
 
     private void FixedUpdate()
@@ -198,7 +198,8 @@ public class TowerController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        towerGUIManager.TowerClicked(this, upgradeTree, towerStats, transform.position);
+        if(alive)
+            towerGUIManager.TowerClicked(this, upgradeTree, towerStats, transform.position);
     }
 
     private void OnMouseEnter()
