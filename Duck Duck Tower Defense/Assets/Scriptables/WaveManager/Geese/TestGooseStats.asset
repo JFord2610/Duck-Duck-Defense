@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fde89b765f4f10946a639458b391c6e6, type: 3}
-  m_Name: GeraldStats
+  m_Script: {fileID: 11500000, guid: bc26a345689d94347801b7632d2d8197, type: 3}
+  m_Name: TestGooseStats
   m_EditorClassIdentifier: 
-  damage: 5
-  attackSpeed: 2
-  attackRange: 3
-  targetingType: 0
+  maxHealth: 20
+  speed: 2
+  lifeWorth: 5
+  goldWorth: 10

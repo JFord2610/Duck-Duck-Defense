@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fde89b765f4f10946a639458b391c6e6, type: 3}
-  m_Name: GeraldStats
+  m_Name: AgentQuackStats
   m_EditorClassIdentifier: 
-  damage: 5
-  attackSpeed: 2
+  damage: 3
+  attackSpeed: 3
   attackRange: 3
   targetingType: 0
