@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: GeraldVisuals
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 8bc9f83a82ff63942a354adc5d85b2ed, type: 3}
-  animController: {fileID: 9100000, guid: 421f29c94e9aec848877d1d448cdc964, type: 2}
+  animController: {fileID: 9100000, guid: c6bd46fe86c11ef4f8e4df4547cbcc2c, type: 2}

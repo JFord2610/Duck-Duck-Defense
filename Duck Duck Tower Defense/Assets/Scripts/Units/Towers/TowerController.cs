@@ -115,7 +115,7 @@ public class TowerController : MonoBehaviour
         anim.speed = 1 / AttackSpeed;
         action = (BaseAction)gameObject.AddComponent(System.Type.GetType(towerInfo.action));
         spriteRenderer.sprite = towerInfo.towerVisuals.sprite;
-        anim.runtimeAnimatorController = (RuntimeAnimatorController)towerInfo.towerVisuals.animController;
+        anim.runtimeAnimatorController = RuntimeAnimatorController.Instantiate(towerInfo.towerVisuals.animController);
     }
 
     private void FixedUpdate()
