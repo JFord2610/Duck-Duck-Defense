@@ -10,7 +10,7 @@ public class TowerUpgrade : ScriptableObject
     [TextArea]
     public string upgradeDescription = null;
     public Sprite upgradeSprite = null;
-    public Modifier modifier = null;
+    public TowerModifier modifier = null;
     public int cost = 0;
     public bool hasUpgrade = false;
 

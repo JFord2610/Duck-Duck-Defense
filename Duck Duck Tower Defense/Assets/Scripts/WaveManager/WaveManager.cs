@@ -46,8 +46,7 @@ public class WaveManager : MonoBehaviour
     {
         for (int i = 0; i < w.Geese.Count; i++)
         {
-            GooseData g = w.Geese[i];
-            unitFactory.SpawnGoose(g.speed, g.health, g.lifeWorth, g.goldWorth, g.color);
+            unitFactory.SpawnGoose(w.Geese[i]);
 
             yield return new WaitForSeconds(w.timeDelta);
         }

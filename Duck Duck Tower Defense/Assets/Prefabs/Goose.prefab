@@ -93,7 +93,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: db31e19c6fa5814408ef226668f60747, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,7 +101,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!70 &5468054559564151219
@@ -132,12 +132,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 869503d0bf0c90145a29e529ad220b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
-  speed: 10
-  lifeWorth: 5
-  goldWorth: 10
+  stats: {fileID: 11400000, guid: 7798fd413ed4b6c4089d138beb787f31, type: 2}
+  _currentHealth: 0
+  _maxHealth: 0
+  _speed: 0
+  _lifeWorth: 0
+  _goldWorth: 0
   moving: 0
-  gameManager: {fileID: 0}
 --- !u!114 &3661273050580575401
 MonoBehaviour:
   m_ObjectHideFlags: 0

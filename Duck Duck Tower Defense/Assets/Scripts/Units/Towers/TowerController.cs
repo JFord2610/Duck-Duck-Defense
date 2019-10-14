@@ -80,7 +80,7 @@ public class TowerController : MonoBehaviour
     #endregion
 
     public UpgradeTree upgradeTree;
-    public List<Modifier> modifiers;
+    public List<TowerModifier> modifiers;
 
     internal bool alive = false;
     internal bool selected = false;
@@ -124,7 +124,7 @@ public class TowerController : MonoBehaviour
             action.Action();
     }
 
-    internal void AddModifier(Modifier mod)
+    internal void AddModifier(TowerModifier mod)
     {
         if ((mod.modType & EModifierType.Stats) == EModifierType.Stats)
         {
@@ -150,7 +150,7 @@ public class TowerController : MonoBehaviour
         modifiers.Add(mod);
     }
 
-    internal void RemoveModifier(Modifier mod)
+    internal void RemoveModifier(TowerModifier mod)
     {
         if ((mod.modType & EModifierType.Stats) == EModifierType.Stats)
         {

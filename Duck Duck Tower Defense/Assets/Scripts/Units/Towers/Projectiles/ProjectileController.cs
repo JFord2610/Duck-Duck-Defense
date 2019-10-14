@@ -67,10 +67,10 @@ public class ProjectileController : MonoBehaviour
                     return;
                 }
 
-            goose1.GetComponent<BaseGoose>().Damage(damage);
 
             if (pierceCount < pierceTotal)
             {
+                goose1.GetComponent<BaseGoose>().Damage(damage);
                 if (bounceCount < bounceTotal)
                 {
                     bouncing = true;
