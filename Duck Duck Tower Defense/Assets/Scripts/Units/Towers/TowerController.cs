@@ -97,7 +97,7 @@ public class TowerController : MonoBehaviour
     SpriteRenderer attackRadius = null;
     SpriteRenderer spriteRenderer = null;
     Animator anim = null;
-    internal BaseAction action = null;
+    List<BaseAction> actions = null;
 
     private void Start()
     {
@@ -105,7 +105,9 @@ public class TowerController : MonoBehaviour
         upgradeTree = towerInfo.upgradeTree;
         projInfo = towerInfo.projectileInfo;
         towerStats = towerInfo.towerStats;
-        projInfo = towerInfo.projectileInfo;
+        towerVisuals = towerInfo.towerVisuals;
+        _sprite = towerVisuals.sprite;
+        _animController = towerVisuals.animController;
         spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
         attackRadius = transform.GetChild(2).gameObject.GetComponent<SpriteRenderer>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
@@ -113,15 +115,41 @@ public class TowerController : MonoBehaviour
         anim = spriteRenderer.gameObject.GetComponent<Animator>();
         attackRadius.transform.localScale = new Vector2(AttackRange * 2, AttackRange * 2);
         anim.speed = 1 / AttackSpeed;
-        action = (BaseAction)gameObject.AddComponent(System.Type.GetType(towerInfo.action));
+        actions = new List<BaseAction>();
+        AddAction(towerInfo.action);
         spriteRenderer.sprite = towerInfo.towerVisuals.sprite;
-        anim.runtimeAnimatorController = RuntimeAnimatorController.Instantiate(towerInfo.towerVisuals.animController);
+        anim.runtimeAnimatorController = Instantiate(towerInfo.towerVisuals.animController);
     }
 
     private void FixedUpdate()
     {
         if (alive)
-            action.Action();
+            actions.ForEach(action=>
+            {
+                action.Action();
+            });
+    }
+
+    public void AddAction(string actionString)
+    {
+        BaseAction action = (BaseAction)Activator.CreateInstance(Type.GetType(actionString));
+        action.Init(this);
+        actions.Add(action);
+    }
+    public void RemoveAction(string actionString)
+    {
+        BaseAction action = null;
+        foreach (BaseAction a in actions)
+        {
+            if (a.name == actionString)
+            {
+                action = a;
+                break;
+            }
+        }
+        if (action == null) return;
+        action.Destroy();
+        actions.Remove(action);
     }
 
     internal void AddModifier(TowerModifier mod)
@@ -136,12 +164,12 @@ public class TowerController : MonoBehaviour
                 projInfo.speed += mod.projectileInfo.speed;
                 projInfo.bounces += mod.projectileInfo.bounces;
                 projInfo.pierce += mod.projectileInfo.pierce;
-                projInfo.speed += mod.projectileInfo.timeBeforeDeath;
+                projInfo.timeBeforeDeath += mod.projectileInfo.timeBeforeDeath;
             }
         }
         if ((mod.modType & EModifierType.Action) == EModifierType.Action)
         {
-            gameObject.AddComponent(Type.GetType(mod.action));
+            AddAction(mod.action);
         }
         if ((mod.modType & EModifierType.Visual) == EModifierType.Visual)
         {
@@ -149,7 +177,6 @@ public class TowerController : MonoBehaviour
         }
         modifiers.Add(mod);
     }
-
     internal void RemoveModifier(TowerModifier mod)
     {
         if ((mod.modType & EModifierType.Stats) == EModifierType.Stats)
@@ -167,7 +194,7 @@ public class TowerController : MonoBehaviour
         }
         if ((mod.modType & EModifierType.Action) == EModifierType.Action)
         {
-            Destroy(gameObject.GetComponent(mod.action));
+            RemoveAction(mod.action);
         }
         if ((mod.modType & EModifierType.Visual) == EModifierType.Visual)
         {
@@ -307,6 +334,24 @@ public class TowerController : MonoBehaviour
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         spriteRenderer.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
     }
+
+    public void SetAttackAnimTrigger()
+    {
+        anim.SetTrigger("Attack");
+    }
+
+    public void StartCooldown(BaseAction action)
+    {
+        action.onCooldown = true;
+        StartCoroutine("Cooldown", action);
+    }
+
+    IEnumerator Cooldown(BaseAction action)
+    {
+        yield return new WaitForSeconds(1 / AttackSpeed);
+        action.onCooldown = false;
+    }
+
 
     private void OnValidate()
     {

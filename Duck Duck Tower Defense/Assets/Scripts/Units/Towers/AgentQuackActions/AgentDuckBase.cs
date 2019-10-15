@@ -1,11 +1,15 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class GeraldBase : BaseAction
+public class AgentDuckBase : BaseAction
 {
+    Animator anim = null;
+
     public override void Init(TowerController tc)
     {
         base.Init(tc);
-        name = "GeraldBase";
+        name = "AgentDuckBase";
     }
 
     public override void Action()
@@ -34,7 +38,7 @@ public class GeraldBase : BaseAction
 
     private void AttackGoose(BaseGoose goose)
     {
-        towerController.SetAttackAnimTrigger();
+        anim.SetTrigger("Attack");
         GameObject proj = gameManager.projectileFactory.CreateProjectile(towerController, "GeraldProjectile", towerController.Damage, (goose.transform.position - towerController.transform.position).normalized, towerController.transform.position, towerController.projInfo);
     }
 }

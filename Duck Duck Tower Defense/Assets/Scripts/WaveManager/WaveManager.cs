@@ -5,7 +5,9 @@ using UnityEngine;
 public class WaveManager : MonoBehaviour
 {
     public UnitFactory unitFactory = null;
-    
+
+    public List<GooseModifier> modifiers = null;
+
     public Round[] Rounds = null;
     private int roundIndex;
     
@@ -13,6 +15,7 @@ public class WaveManager : MonoBehaviour
 
     private void Awake()
     {
+        modifiers = new List<GooseModifier>();
         inProgress = false;
     }
 
@@ -46,7 +49,9 @@ public class WaveManager : MonoBehaviour
     {
         for (int i = 0; i < w.Geese.Count; i++)
         {
-            unitFactory.SpawnGoose(w.Geese[i]);
+            GameObject goose = unitFactory.SpawnGoose(w.Geese[i]);
+            if (modifiers.Count > 0)
+                modifiers.ForEach(mod => { goose.GetComponent<BaseGoose>().AddModifier(mod); });
 
             yield return new WaitForSeconds(w.timeDelta);
         }

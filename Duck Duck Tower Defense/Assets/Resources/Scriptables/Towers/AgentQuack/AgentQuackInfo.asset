@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: AgentQuack
   towerStats: {fileID: 11400000, guid: 77d2f298b224fd84dbfe76936c3e6b9d, type: 2}
-  projectileInfo: {fileID: 0}
-  towerVisuals: {fileID: 0}
-  upgradeTree: {fileID: 0}
+  projectileInfo: {fileID: 11400000, guid: 8c34e3f14dc7dfe43b04e1c6ca3ec14e, type: 2}
+  towerVisuals: {fileID: 11400000, guid: 32578979d05879f40be24d3b76a107a5, type: 2}
+  upgradeTree: {fileID: 11400000, guid: fdfdc38524da12a41a621f22b1db5c17, type: 2}
   towerCost: 100
-  action: 
+  action: AgentDuckBase

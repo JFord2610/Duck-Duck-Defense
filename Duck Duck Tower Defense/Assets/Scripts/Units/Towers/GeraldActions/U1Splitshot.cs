@@ -2,15 +2,13 @@
 
 public class U1Splitshot : BaseAction
 {
-    Animator anim = null;
-
     float projectileAngleOffset = 30.0f;
 
-    protected override void Init()
+    public override void Init(TowerController tc)
     {
-        anim = gameObject.GetComponentInChildren<Animator>();
-        DestroyAction("GeraldBase");
-        towerController.action = this;
+        base.Init(tc);
+        name = "U1Splitshot";
+        towerController.RemoveAction("GeraldBase");
     }
 
     public override void Action()
@@ -31,8 +29,7 @@ public class U1Splitshot : BaseAction
         if (towerController.GetNearbyGeese().Count > 0 && !onCooldown)
         {
             AttackGoose(targetGoose);
-            onCooldown = true;
-            StartCoroutine("Cooldown");
+            towerController.StartCooldown(this);
         }
         if (targetGoose != null)
             towerController.RotateToPoint(targetGoose.Position);
@@ -40,16 +37,16 @@ public class U1Splitshot : BaseAction
 
     private void AttackGoose(BaseGoose goose)
     {
-        anim.SetTrigger("Attack");
+        towerController.SetAttackAnimTrigger();
         float damage = towerController.Damage;
-        Vector3 moveVector1 = goose.transform.position - transform.position;
-        Vector3 moveVector2 = goose.transform.position - transform.position;
-        Vector3 moveVector3 = goose.transform.position - transform.position;
+        Vector3 moveVector1 = goose.transform.position - towerController.transform.position;
+        Vector3 moveVector2 = goose.transform.position - towerController.transform.position;
+        Vector3 moveVector3 = goose.transform.position - towerController.transform.position;
         moveVector2 = Quaternion.Euler(0, 0, projectileAngleOffset) * moveVector2;
         moveVector3 = Quaternion.Euler(0, 0, -projectileAngleOffset) * moveVector3;
 
-        GameObject proj1 = gameManager.projectileFactory.CreateProjectile(towerController, "GeraldProjectile", damage, moveVector1.normalized, transform.position, towerController.projInfo);
-        GameObject proj2 = gameManager.projectileFactory.CreateProjectile(towerController, "GeraldProjectile", damage, moveVector2.normalized, transform.position, towerController.projInfo);
-        GameObject proj3 = gameManager.projectileFactory.CreateProjectile(towerController, "GeraldProjectile", damage, moveVector3.normalized, transform.position, towerController.projInfo);
+        GameObject proj1 = gameManager.projectileFactory.CreateProjectile(towerController, "GeraldProjectile", damage, moveVector1.normalized, towerController.transform.position, towerController.projInfo);
+        GameObject proj2 = gameManager.projectileFactory.CreateProjectile(towerController, "GeraldProjectile", damage, moveVector2.normalized, towerController.transform.position, towerController.projInfo);
+        GameObject proj3 = gameManager.projectileFactory.CreateProjectile(towerController, "GeraldProjectile", damage, moveVector3.normalized, towerController.transform.position, towerController.projInfo);
     }
 }

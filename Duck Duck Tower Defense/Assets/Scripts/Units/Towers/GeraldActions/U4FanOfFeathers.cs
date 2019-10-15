@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class U4FanOfFeathers : BaseAction
 {
-    Animator anim = null;
-    
     float projectileAngleOffset = 10.0f;
 
-    protected override void Init()
+    public override void Init(TowerController tc)
     {
-        anim = gameObject.GetComponentInChildren<Animator>();
-        DestroyAction("U1Splitshot");
-        towerController.action = this;
+        base.Init(tc);
+        name = "U4FanOfFeathers";
+        towerController.RemoveAction("U1Splitshot");
     }
 
     public override void Action()
@@ -33,8 +31,7 @@ public class U4FanOfFeathers : BaseAction
         if (towerController.GetNearbyGeese().Count > 0 && !onCooldown)
         {
             AttackGoose(targetGoose);
-            onCooldown = true;
-            StartCoroutine("Cooldown");
+            towerController.StartCooldown(this);
         }
         if (targetGoose != null)
             towerController.RotateToPoint(targetGoose.Position);
@@ -42,9 +39,9 @@ public class U4FanOfFeathers : BaseAction
 
     private void AttackGoose(BaseGoose goose)
     {
-        anim.SetTrigger("Attack");
+        towerController.SetAttackAnimTrigger();
         float damage = towerController.Damage;
-        Vector3 moveVector1 = goose.transform.position - transform.position;
+        Vector3 moveVector1 = goose.transform.position - towerController.transform.position;
 
         for (float i = -3.5f; i < 3.5f; i++)
         {
@@ -55,7 +52,7 @@ public class U4FanOfFeathers : BaseAction
             "GeraldProjectile",
             damage,
             moveVector2.normalized,
-            transform.position,
+            towerController.transform.position,
             towerController.projInfo);
         }
     }

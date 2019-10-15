@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f64a4f4eb1ba8549b73ecb0cc281b3c, type: 3}
+  m_Name: AgentQuackUpgradeTree
+  m_EditorClassIdentifier: 
+  towerName: 
+  line1:
+  - {fileID: 11400000, guid: 92e273685b540324a9ce6525904c7b0f, type: 2}
+  - {fileID: 11400000, guid: 7bc7e9371fd94124fbf34e5e9476a12e, type: 2}
+  - {fileID: 11400000, guid: 306f912429cfb0345ad67d976e68a7a6, type: 2}
+  - {fileID: 11400000, guid: f647eff37f58edf4fb1d9f8a0bc9a5a5, type: 2}
+  line2:
+  - {fileID: 11400000, guid: 6171c8665ffda2547998d9838cf60ee9, type: 2}
+  - {fileID: 11400000, guid: 600156102758eb441a2ed5db9b9272be, type: 2}
+  - {fileID: 11400000, guid: 9c8b405c20866e945a4e72a72d1aa24e, type: 2}
+  - {fileID: 11400000, guid: 57fd9762c2a28114ba5da43cff0ab8ae, type: 2}

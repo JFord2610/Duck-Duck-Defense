@@ -18,6 +18,11 @@ public class Shop : MonoBehaviour
     SpriteRenderer duckSprite;
     SpriteRenderer duckHitCircle;
 
+    #region towers
+    [SerializeField] TowerInfo geraldInfo;
+    [SerializeField] TowerInfo agentQuackInfo;
+    #endregion
+
     private void FixedUpdate()
     {
         if (holdingDuck)
@@ -57,13 +62,33 @@ public class Shop : MonoBehaviour
         }
     }
 
-    public void DuckButtonPressed()
+    public void GeraldButton_OnClick()
     {
         if(!holdingDuck)
         {
             if (gameManager.player.money > duckBuyPrice)
             {
-                duckObj = unitFactory.SpawnTower();
+                duckObj = unitFactory.SpawnTower(geraldInfo);
+                duckTower = duckObj.GetComponent<TowerController>();
+                duckSprite = duckTower.GetComponentInChildren<SpriteRenderer>();
+                duckHitCircle = duckObj.transform.GetChild(1).GetComponent<SpriteRenderer>();
+                holdingDuck = true;
+                Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                duckObj.transform.position = new Vector3(pos.x, pos.y, 0.0f);
+            }
+            else
+            {
+                //To Do: maybe play notification that player cant afford item
+            }
+        }
+    }
+    public void AgentQuackButton_OnClick()
+    {
+        if (!holdingDuck)
+        {
+            if (gameManager.player.money > duckBuyPrice)
+            {
+                duckObj = unitFactory.SpawnTower(agentQuackInfo);
                 duckTower = duckObj.GetComponent<TowerController>();
                 duckSprite = duckTower.GetComponentInChildren<SpriteRenderer>();
                 duckHitCircle = duckObj.transform.GetChild(1).GetComponent<SpriteRenderer>();

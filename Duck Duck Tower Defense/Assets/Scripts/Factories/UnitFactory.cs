@@ -4,7 +4,6 @@ public class UnitFactory : MonoBehaviour
     [SerializeField] private GameObject goose = null;
     [SerializeField] private GameObject tower = null;
     [SerializeField] private GameManagerScript gameManager = null;
-    [SerializeField] private TowerInfo geraldInfo = null;
     [SerializeField] private Transform enemySpawnPoint = null;
 
     public GameObject SpawnGoose(GooseInfo info)
@@ -20,11 +19,11 @@ public class UnitFactory : MonoBehaviour
         return g;
     }
 
-    public GameObject SpawnTower()
+    public GameObject SpawnTower(TowerInfo info)
     {
         GameObject t = Instantiate(tower);
         TowerController tc = t.GetComponent<TowerController>();
-        tc.towerInfo = geraldInfo;
+        tc.towerInfo = info;
         return t;
     }
 }

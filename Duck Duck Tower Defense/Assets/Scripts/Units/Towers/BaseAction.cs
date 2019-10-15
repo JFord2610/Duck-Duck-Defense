@@ -2,38 +2,29 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public abstract class BaseAction : MonoBehaviour
+public abstract class BaseAction
 {
-    protected TowerStats tStats;
+    public string name;
+    public bool onCooldown = false;
 
+    protected TowerStats tStats;
     protected GameManagerScript gameManager = null;
     protected TowerController towerController = null;
 
-    protected bool onCooldown;
-
-    private void Awake()
+    public virtual void Init(TowerController tc)
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
-        towerController = gameObject.GetComponent<TowerController>();
-    }
-
-    private void Start()
-    {
+        towerController = tc;
         tStats = towerController.towerInfo.towerStats;
-        Init();
     }
 
-    protected abstract void Init();
-    protected void DestroyAction(string action)
+    public virtual void Action()
     {
-        Destroy(gameObject.GetComponent(System.Type.GetType(action)));
+
     }
 
-    public abstract void Action();
-
-    IEnumerator Cooldown()
+    public virtual void Destroy()
     {
-        yield return new WaitForSeconds(1 / towerController.AttackSpeed);
-        onCooldown = false;
+
     }
 }
