@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4017639455233955877}
   - component: {fileID: 4823604535861912020}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TowerHitRadius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 3959165540999343288}
   - component: {fileID: 7030542922018303384}
   - component: {fileID: 995058843982208626}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: duck_twr1_spr1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,8 +189,9 @@ GameObject:
   - component: {fileID: 5725866218632788179}
   - component: {fileID: 605527946037550412}
   - component: {fileID: 6388012715966534829}
-  m_Layer: 0
-  m_Name: Tower
+  - component: {fileID: 6343164704490891514}
+  m_Layer: 12
+  m_Name: BaseTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223,7 +224,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -255,6 +256,27 @@ MonoBehaviour:
   _animController: {fileID: 0}
   upgradeTree: {fileID: 0}
   modifiers: []
+--- !u!50 &6343164704490891514
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5718340254931879210}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &6059369363277481363
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,7 +287,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3460939699039581767}
   - component: {fileID: 3140433142945325362}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: AttackRadius
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -44,12 +44,12 @@ public class Shop : MonoBehaviour
                     gameManager.player.money -= duckBuyPrice;
                     duckTower.alive = true;
                     duckHitCircle.gameObject.SetActive(false);
+                    duckTower.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
                 }
             }
             if (Input.GetMouseButtonUp(1))
             {
-                holdingDuck = false;
-                Destroy(duckObj);
+                CanceledPlacement();
             }
             if (duckTower.colliding)
             {
@@ -101,6 +101,12 @@ public class Shop : MonoBehaviour
                 //To Do: maybe play notification that player cant afford item
             }
         }
+    }
+
+    private void CanceledPlacement()
+    {
+        holdingDuck = false;
+        Destroy(duckObj);
     }
 }
 

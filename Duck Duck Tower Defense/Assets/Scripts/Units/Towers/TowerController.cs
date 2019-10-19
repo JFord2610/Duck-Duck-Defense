@@ -215,11 +215,11 @@ public class TowerController : MonoBehaviour
         attackRadius.size = new Vector2(AttackRange * 2, AttackRange * 2);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D _other)
     {
         collisions++;
     }
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D _other)
     {
         collisions--;
     }
