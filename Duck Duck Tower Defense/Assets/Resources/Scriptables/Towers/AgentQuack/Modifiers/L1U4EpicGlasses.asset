@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33e07f31bd738ed409a05ffed7f00968, type: 3}
+  m_Name: L1U4EpicGlasses
+  m_EditorClassIdentifier: 
+  modType: 2
+  modName: 
+  modDescription: 
+  modSprite: {fileID: 0}
+  damage: 4
+  attackRange: 3
+  attackSpeed: 3
+  projectileInfo: {fileID: 0}
+  action: 
+  towerSprite: {fileID: 0}
+  animController: {fileID: 0}

@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 430b3c0b17ca1044ca4bb67cb9d62ad9, type: 3}
   m_Name: L2U3CovertOperations
   m_EditorClassIdentifier: 
-  upgradeName: 
-  upgradeDescription: 
+  upgradeName: Covert Operations
+  upgradeDescription: Agent Quack will occasionally place depth charges in nearby
+    rivers within his attack radius. These deal 30 damage in a radius of 1 (or 2?)
+    when walked over by geese. (8 second cooldown)
   upgradeSprite: {fileID: 0}
-  modifier: {fileID: 0}
-  cost: 0
+  modifier: {fileID: 11400000, guid: 4adc4ecc7844e624397be94fb2d0bb18, type: 2}
+  cost: 1800
   hasUpgrade: 0

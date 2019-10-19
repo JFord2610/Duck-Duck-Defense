@@ -2585,6 +2585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitFactory: {fileID: 1822230348}
+  modifiers: []
   Rounds:
   - {fileID: 11400000, guid: 3c0ead7b6330def4a88a05a8ab09d6f4, type: 2}
   - {fileID: 11400000, guid: 3c0ead7b6330def4a88a05a8ab09d6f4, type: 2}
@@ -7849,10 +7850,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b213371a9c6703409206983daa7ac28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towers:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!4 &1870122235
 Transform:
   m_ObjectHideFlags: 0

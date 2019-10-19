@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class AgentDuckBase : BaseAction
 {
-    Animator anim = null;
-
     public override void Init(TowerController tc)
     {
         base.Init(tc);
@@ -38,7 +36,7 @@ public class AgentDuckBase : BaseAction
 
     private void AttackGoose(BaseGoose goose)
     {
-        anim.SetTrigger("Attack");
+        towerController.SetAttackAnimTrigger();
         GameObject proj = gameManager.projectileFactory.CreateProjectile(towerController, "GeraldProjectile", towerController.Damage, (goose.transform.position - towerController.transform.position).normalized, towerController.transform.position, towerController.projInfo);
     }
 }

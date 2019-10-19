@@ -24,6 +24,7 @@ public class UnitFactory : MonoBehaviour
         GameObject t = Instantiate(tower);
         TowerController tc = t.GetComponent<TowerController>();
         tc.towerInfo = info;
+        gameManager.towers.Add(t);
         return t;
     }
 }

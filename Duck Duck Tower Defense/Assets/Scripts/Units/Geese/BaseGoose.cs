@@ -46,7 +46,10 @@ public class BaseGoose : MonoBehaviour
     public float Speed
     {
         get { return _speed; }
-        set { _speed = value; }
+        set {
+            unitController.speed = value;
+            _speed = value;
+        }
     }
     public int LifeWorth
     {
@@ -85,6 +88,7 @@ public class BaseGoose : MonoBehaviour
     
     internal void AddModifier(GooseModifier mod)
     {
+        unitController = gameObject.GetComponent<UnitController>();
         if ((mod.modType & EModifierType.Stats) == EModifierType.Stats)
         {
             MaxHealth += mod.health;

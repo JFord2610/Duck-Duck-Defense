@@ -12,7 +12,7 @@ public class L1U1SecretOps : BaseAction
         base.Init(tc);
         name = "L1U1SecretOps";
         waveManager = GameObject.Find("WaveManager").GetComponent<WaveManager>();
-        goldWorthModifier = Resources.Load<GooseModifier>("Scriptables/Geese/+5GoldWorth");
+        goldWorthModifier = Resources.Load<GooseModifier>("Scriptables/Geese/Modifiers/+5GoldWorth");
         waveManager.modifiers.Add(goldWorthModifier);
     }
 

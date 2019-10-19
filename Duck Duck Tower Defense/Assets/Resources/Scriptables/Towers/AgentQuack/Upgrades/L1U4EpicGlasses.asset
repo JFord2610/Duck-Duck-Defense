@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 430b3c0b17ca1044ca4bb67cb9d62ad9, type: 3}
   m_Name: L1U4EpicGlasses
   m_EditorClassIdentifier: 
-  upgradeName: 
-  upgradeDescription: 
+  upgradeName: Epic Glasses
+  upgradeDescription: 'Agent Quack gets a visual upgrade. I wonder what else he gets? '
   upgradeSprite: {fileID: 0}
-  modifier: {fileID: 0}
-  cost: 0
+  modifier: {fileID: 11400000, guid: e91e2a3f46a639e4aa9e1bd72b9808db, type: 2}
+  cost: 2650
   hasUpgrade: 0

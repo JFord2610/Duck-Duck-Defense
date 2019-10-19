@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 430b3c0b17ca1044ca4bb67cb9d62ad9, type: 3}
   m_Name: L2U1Precision
   m_EditorClassIdentifier: 
-  upgradeName: 
-  upgradeDescription: 
+  upgradeName: Precision
+  upgradeDescription: Agent Quack gains +1 attack range!
   upgradeSprite: {fileID: 0}
-  modifier: {fileID: 0}
-  cost: 0
+  modifier: {fileID: 11400000, guid: 93e5d1fe3d5c7e4468efec8ca7e23221, type: 2}
+  cost: 400
   hasUpgrade: 0

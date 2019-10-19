@@ -50,6 +50,7 @@ public class WaveManager : MonoBehaviour
         for (int i = 0; i < w.Geese.Count; i++)
         {
             GameObject goose = unitFactory.SpawnGoose(w.Geese[i]);
+            goose.GetComponent<BaseGoose>().stats = w.Geese[i].stats;
             if (modifiers.Count > 0)
                 modifiers.ForEach(mod => { goose.GetComponent<BaseGoose>().AddModifier(mod); });
 

@@ -136,6 +136,7 @@ public class TowerController : MonoBehaviour
         action.Init(this);
         actions.Add(action);
     }
+
     public void RemoveAction(string actionString)
     {
         BaseAction action = null;
@@ -351,7 +352,6 @@ public class TowerController : MonoBehaviour
         yield return new WaitForSeconds(1 / AttackSpeed);
         action.onCooldown = false;
     }
-
 
     private void OnValidate()
     {

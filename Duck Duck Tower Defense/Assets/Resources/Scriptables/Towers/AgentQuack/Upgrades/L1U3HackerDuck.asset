@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 430b3c0b17ca1044ca4bb67cb9d62ad9, type: 3}
   m_Name: L1U3HackerDuck
   m_EditorClassIdentifier: 
-  upgradeName: 
-  upgradeDescription: 
+  upgradeName: Hacker Duck
+  upgradeDescription: Agent Quack slows all geese within his attack radius. +40% slow
+    in attack radius
   upgradeSprite: {fileID: 0}
-  modifier: {fileID: 0}
-  cost: 0
+  modifier: {fileID: 11400000, guid: 7dbe4ddad971d714da2037f811789098, type: 2}
+  cost: 850
   hasUpgrade: 0

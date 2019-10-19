@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33e07f31bd738ed409a05ffed7f00968, type: 3}
+  m_Name: L1U3HackerDuck
+  m_EditorClassIdentifier: 
+  modType: 8
+  modName: Hacker Duck
+  modDescription: Agent Quack slows all geese within his attack radius. +40% slow
+    in attack radius
+  modSprite: {fileID: 0}
+  damage: 0
+  attackRange: 0
+  attackSpeed: 0
+  projectileInfo: {fileID: 0}
+  action: L1U3HackerDuck
+  towerSprite: {fileID: 0}
+  animController: {fileID: 0}
