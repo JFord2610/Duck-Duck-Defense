@@ -55,7 +55,6 @@ public class TowerGUIManager : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                gameManager.DecrementPlayerBusy();
                 Vector3 mousePos = Input.mousePosition;
                 PointerEventData ped = new PointerEventData(eventSystem);
                 ped.position = mousePos;
@@ -63,6 +62,9 @@ public class TowerGUIManager : MonoBehaviour
                 gameOverlayCanvas.GetComponent<GraphicRaycaster>().Raycast(ped, resultList);
                 if (resultList.Count == 0 && !currentTowerController.isHovered)
                 {
+                    gameManager.DecrementPlayerBusy();
+                    upgradeButton.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                    infoButton.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                     towerSelected = false;
                     currentTowerController.selected = false;
                     towerGUIHolder.SetActive(false);
@@ -215,7 +217,6 @@ public class TowerGUIManager : MonoBehaviour
     {
         if (upgradesMenu.activeInHierarchy)
         {
-            sellButton.GetComponent<Image>().color += transparencyChangeOnClick;
             infoButton.GetComponent<Image>().color += transparencyChangeOnClick;
             upgradesMenu.SetActive(false);
             background.SetActive(false);
@@ -230,7 +231,6 @@ public class TowerGUIManager : MonoBehaviour
         else
         {
             infoButton.GetComponent<Image>().color -= transparencyChangeOnClick;
-            sellButton.GetComponent<Image>().color -= transparencyChangeOnClick;
             upgradesMenu.SetActive(true);
             if (!background.activeInHierarchy)
                 background.SetActive(true);
@@ -240,7 +240,6 @@ public class TowerGUIManager : MonoBehaviour
     {
         if (infoMenu.activeInHierarchy)
         {
-            sellButton.GetComponent<Image>().color += transparencyChangeOnClick;
             upgradeButton.GetComponent<Image>().color += transparencyChangeOnClick;
             infoMenu.SetActive(false);
             background.SetActive(false);
@@ -255,7 +254,6 @@ public class TowerGUIManager : MonoBehaviour
         else
         {
             upgradeButton.GetComponent<Image>().color -= transparencyChangeOnClick;
-            sellButton.GetComponent<Image>().color -= transparencyChangeOnClick;
             infoMenu.SetActive(true);
             if (!background.activeInHierarchy)
                 background.SetActive(true);
